@@ -1,0 +1,145 @@
+<div  style="min-height: 504px; margin-top: 84px; margin-bottom: 90px;">
+    <div class="container p-0 m-0">
+        <div class="row p-0 m-0">
+            <div class="col-12 p-0">
+                <mat-tab-group >
+                  <mat-tab  label="Fixtures"> 
+
+                    <div class="mt-3" *ngFor="let i of myjoinedTeams;let index=index;" >
+                      <div class="rounded border border-2 mx-3 bg-light" *ngIf="i.status=='opened' " (click)="goiningJoinedContest(i,i.status )"  style="cursor: pointer">
+                        <p class="fw-bold m-0 py-2 ps-2 text-muted">
+                          {{ i.name }}
+                        </p>
+                        <div class="d-flex justify-content-between">
+                          <div class="d-flex justify-content-center flex-column px-4">
+                            <div class="mx-auto">
+                              <img src="{{ i.team1logo }}" alt="team-1" height="30" width="auto" class="" />
+                            </div>
+                            <p class="teamName">{{ i.team1display }}</p>
+                          </div>
+                          <div class="d-flex justify-content-center flex-column">
+                            <div class="d-flex">
+                            <ng-container *ngFor="let ti of remaingTime;let i=index">
+                                <span *ngIf="i==index && ti.d>0" class="d-inline-block pe-1"> {{ti.d}}:D</span>
+                                <countdown  [config]="{leftTime:60*60*ti.t,format:'HH:mm:ss'}" *ngIf="i==index && ti.d>=0;"  ></countdown>
+  
+                                <p *ngIf="i==index && ti.d<0;"  class="m-0">Completed</p>
+                          </ng-container>
+                          
+                        </div>
+                            <p class="text-center">
+                              <i class="bi bi-trophy"></i> {{ i.maximum_winning_amount }}
+                            </p>
+                          </div>
+                          <div class="d-flex justify-content-center flex-column px-4">
+                              <div class="mx-auto">
+                                <img src="{{ i.team2logo }}" alt="team-2" height="30" width="auto" />
+                              </div>
+                              <p class="teamName text-wrap">{{ i.team2display }}</p>
+                            </div>
+                        </div>
+                        <div class="pb-1">
+                         <p class="m-0 text-center text-muted" style="font-size: .7rem;"> Contest Joined: {{i.joinedcontest}}</p>
+                        </div>
+                      </div>
+                  </div>
+                  <ng-container  *ngIf="openedbutton">
+                    <div class="p-0 pt-3 d-flex justify-content-center flex-column">
+                      <img  src="https://www.myteam11.com/fantasy-sports/assets/images/cricket_empty.png" alt="not avaliable" >
+                      <p class="text-center pt-3 text-muted">"You have not joined any upcoming match contests"</p>
+                  </div>
+                </ng-container>
+                  </mat-tab>
+                  <mat-tab label="Live"> 
+
+                    <div class="mt-3" *ngFor="let i of myjoinedTeams;let index=index" >
+                      <div class="rounded border border-2 mx-3 bg-light" *ngIf="i.status=='closed' &&(i.final_status=='pending'||i.final_status=='isReviewed')" (click)="goiningJoinedContest(i,i.status )"  style="cursor: pointer">
+                        <p class="fw-bold m-0 py-2 ps-2 text-muted">
+                          {{ i.name }}
+                        </p>
+                        <div class="d-flex justify-content-between">
+                          <div class="d-flex justify-content-center flex-column px-4">
+                            <div class="mx-auto">
+                              <img src="{{ i.team1logo }}" alt="team-1" height="30" width="auto" class="" />
+                            </div>
+                            <p class="teamName">{{ i.team1display }}</p>
+                          </div>
+                          <div class="d-flex justify-content-center flex-column">
+                            <div class=" d-flex justify-content-center">
+                            <ng-container *ngFor="let ti of remaingTime ;let i=index">
+                                <code *ngIf="i==index && ti.d<0;"  class="m-0 text-center"><span class="d-inline-block blink"></span> Live</code>
+                              </ng-container>
+                          
+                        </div>
+                            <p class="text-center">
+                              <i class="bi bi-trophy"></i> {{ i.maximum_winning_amount }}
+                            </p>
+                          </div>
+                          <div class="d-flex justify-content-center flex-column px-4">
+                              <div class="mx-auto">
+                                <img src="{{ i.team2logo }}" alt="team-2" height="30" width="auto" />
+                              </div>
+                              <p class="teamName text-wrap">{{ i.team2display }}</p>
+                            </div>
+                        </div>
+                        <div class="pb-1">
+                         <p class="m-0 text-center text-muted" style="font-size: .7rem;"> Contest Joined: {{i.joinedcontest}}</p>
+                        </div>
+                      </div>
+                  </div>
+                  <ng-container  *ngIf="livebutton">
+                    <div class="p-0 pt-3 d-flex justify-content-center flex-column">
+                      <img  src="https://www.myteam11.com/fantasy-sports/assets/images/cricket_empty.png" alt="not avaliable" >
+                      <p class="text-center pt-3 text-muted">"You have not joined any live matches yet"</p>
+                  </div>
+                </ng-container>
+                  </mat-tab>
+                  <mat-tab label="Completed"> 
+
+                    <div class="mt-3" *ngFor="let i of myjoinedTeams;let index=index" >
+                      <div class="rounded border border-2 mx-3 bg-light" *ngIf="i.status=='closed' &&(i.final_status=='winnerdeclared'||i.final_status=='isAbandoned'||i.final_status=='isCanceled')" (click)="goiningJoinedContest(i,i.status )"  style="cursor: pointer">
+                        <p class="fw-bold m-0 py-2 ps-2 text-muted">
+                          {{ i.name }}
+                        </p>
+                        <div class="d-flex justify-content-between">
+                          <div class="d-flex justify-content-center flex-column px-4">
+                            <div class="mx-auto">
+                              <img src="{{ i.team1logo }}" alt="team-1" height="30" width="auto" class="" />
+                            </div>
+                            <p class="teamName">{{ i.team1display }}</p>
+                          </div>
+                          <div class="d-flex justify-content-center flex-column">
+                            <div class="d-flex justify-content-center ">
+                                <ng-container *ngFor="let ti of remaingTime;let i=index">
+                                  <code *ngIf="i==index && ti.d<0;" style="color: blue;"  class="m-0">COMPLETED</code>
+                                </ng-container>
+                            </div>
+
+                            <p class="text-center">
+                              <i class="bi bi-trophy"></i> {{ i.maximum_winning_amount }}
+                            </p>
+                          </div>
+                          <div class="d-flex justify-content-center flex-column px-4">
+                              <div class="mx-auto">
+                                <img src="{{ i.team2logo }}" alt="team-2" height="30" width="auto" />
+                              </div>
+                              <p class="teamName text-wrap">{{ i.team2display }}</p>
+                            </div>
+                        </div>
+                        <div class="pb-1">
+                         <p class="m-0 text-center text-muted" style="font-size: .7rem;"> Contest Joined: {{i.joinedcontest}}</p>
+                        </div>
+                      </div>
+                  </div>
+                  <ng-container  *ngIf="completebutton">
+                    <div class="p-0 pt-3 d-flex justify-content-center flex-column">
+                      <img  src="https://www.myteam11.com/fantasy-sports/assets/images/cricket_empty.png" alt="not avaliable" >
+                      <p class="text-center pt-3 text-muted">"You have not joined any contests in recently completed matches"</p>
+                  </div>
+                </ng-container>
+                  </mat-tab>
+                </mat-tab-group>                
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,129 @@
+<div class="container-l p-4 ">
+  <div class="row">
+  <div class="col-lg-5 p-0 col-md-8 col-12 sm-mx-auto rounded  position-relative cardContainer forStyle" style="background-color:#d8e5f2">
+      <!-- OffCanavas Code -->
+      <div class="offcanvas offcanvas-start " style="border: none; " tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" data-bs-backdrop="true">
+        <div class="offcanvas-header  py-3" style="background-color: #1141c1;">
+          <div class="d-flex showingpointer" (click)="router.navigate(['/menu/my-profile'])" data-bs-dismiss="offcanvas">
+            <div class="flex ">
+              <img src={{_apiService.user_details?.image}} alt="user-profile" class="user-profile-image" height="45px" style="border-radius: 25px;">
+            </div>
+            <div class="d-flex flex-column justify-content-center">
+              <p class="m-0 ms-2 text-light" style="font-size: .8rem;">{{_apiService.user_details?.email}}  <i class="ps-1 bi bi-pencil-square showingpointer"></i></p>
+              <!-- <sub class="ms-2 pt-1 text-light" style="font-size: .7rem;">{{_apiService.user_details?.mobile}} </sub> -->
+            </div>
+          </div>
+    <button type="button" class="btn " data-bs-dismiss="offcanvas" ><i class="text-light bi bi-chevron-right"></i></button>
+  </div>
+
+  <div class="offcanvas-body position-relative" style="max-height: 68vh;overflow-y: scroll;">
+    <div class="my-3 py-1 d-flex justify-content-between card-box  bg-light   showingpointer  global-hover-effect" *ngFor="let acc_list of account_options_list" (click)="router.navigate([acc_list.path]) " data-bs-dismiss="offcanvas" >
+      <div class="d-flex align-items-center ps-2">
+        <i [class]="acc_list.icon +' text-muted'" style="font-size: 21px;"></i>
+        <div class="d-flex p-2">
+          <span class="ps-2 fw-medium " style="font-size: 18px;">{{acc_list.title}}</span>
+        </div>
+      </div>
+          <div class="d-flex flex-column py-1 px-3" >
+            <span  *ngIf="acc_list.title=='Refer & Earn'" class="border border-2 py-1 px-2 fw-bold text-muted" style="font-size: 11px;">INVITE</span>
+          </div>
+  </div>
+    <!-- <button  class="p-3 mt-2" mat-raised-button color="primary" (click)="logoutUser()" >Logout</button> -->
+  </div>
+
+  <div class="bottomFotter position-absolute bottom-0 w-100" style="box-shadow: 1px 0px 20px 0px #17171782;">
+    <div class="row p-0">
+      <div class="col-6 py-3 d-flex justify-content-center">
+        <div  class="p-3 d-flex align-items-center settings-button showingpointer"><img src="https://www.myteam11.com/fantasy-sports/assets/images/nc_settings_left.svg" alt=".."> <span class="mx-1">Setting</span></div>
+      </div>
+      <div class="col-6 py-3 d-flex justify-content-center">
+        <div  class="p-3 d-flex align-items-center logout-button showingpointer"  ><img src="https://www.myteam11.com/fantasy-sports/assets/images/nc_livechat_left.svg" alt="..."><span class="mx-1">Live Chat</span></div>
+      </div>
+    </div>
+  </div>
+      </div>
+          <div class="topNavbar bg-white">
+              <div class=" p-0 rounded-top w-100 " style="background-color: #1141c1;" >
+                  <div class="d-flex justify-content-between align-items-center py-3 ">
+                      <div class="ps-2">
+                        <ng-container *ngIf="!((router.url=='/menu/home')||(router.url=='/menu/contests')||(router.url=='/menu/wallet')||(router.url=='/menu/more')) " >
+                          <button  class="btn mx-1 mt-2" style="padding:0px; " (click)="previousPage()">
+                            <mat-icon class="text-light fw-bold fs-5 ">keyboard_backspace</mat-icon>
+                          </button>
+                        </ng-container>
+                          <img  [ngStyle]="{'display':router.url=='/menu/home'|| router.url=='/menu/contests'|| router.url=='/menu/wallet' || router.url=='/menu/more' ? 'inline-block' : 'none' }" src={{_apiService.user_details?.image}} alt="user-profile" class="user-profile-image  showingpointer" height="40px" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="staticBackdrop" style="border-radius: 25px;">
+
+                          <p [ngStyle]="{'display':router.url=='/menu/refer-n-earn' ? 'inline-block' : 'none' }"  class="text-light fw-medium fs-5 py-1 m-0">Refer & Earn</p>
+                          <p [ngStyle]="{'display':router.url=='/menu/golden-ticket' ? 'inline-block' : 'none' }"  class="text-light fw-medium fs-5 py-1 m-0">Golden Ticket</p>
+                          <p [ngStyle]="{'display':router.url=='/menu/series-leaderboard' ? 'inline-block' : 'none' }"  class="text-light fw-medium fs-5 py-1 m-0">Leaderboard</p>
+                          <p [ngStyle]="{'display':router.url=='/menu/favourite-contest' ? 'inline-block' : 'none' }"  class="text-light fw-medium fs-5 py-1 m-0">Favourite Contest</p>
+                          <p [ngStyle]="{'display':router.url=='/menu/feedback' ? 'inline-block' : 'none' }"  class="text-light fw-medium fs-5 py-1 m-0">Feedback</p>
+                          <p [ngStyle]="{'display':router.url=='/menu/support' ? 'inline-block' : 'none' }"  class="text-light fw-medium fs-5 py-1 m-0">Support</p>
+                          <p [ngStyle]="{'display':router.url=='/menu/addcash' ? 'inline-block' : 'none' }"  class="text-light fw-medium fs-5 py-1 m-0">Add Cash</p>
+                          <p [ngStyle]="{'display':router.url=='/menu/transactions' ? 'inline-block' : 'none' }"  class="text-light fw-medium fs-5 py-1 m-0">Recent Transactions</p>
+                          <p [ngStyle]="{'display':router.url=='/menu/about-us' ? 'inline-block' : 'none' }"  class="text-light fw-medium fs-5 py-1 m-0">Golden Ticket</p>
+                          <p [ngStyle]="{'display':router.url=='/menu/how-to-play' ? 'inline-block' : 'none' }"  class="text-light fw-medium fs-5 py-1 m-0">How To Play</p>
+                          <p [ngStyle]="{'display':router.url=='/menu/points-system' ? 'inline-block' : 'none' }"  class="text-light fw-medium fs-5 py-1 m-0">Fantasy Point System</p>
+                          <p [ngStyle]="{'display':router.url=='/menu/tutorial' ? 'inline-block' : 'none' }"  class="text-light fw-medium fs-5 py-1 m-0">MyTeam11</p>
+                          <p [ngStyle]="{'display':router.url=='/menu/faq' ? 'inline-block' : 'none' }"  class="text-light fw-medium fs-5 py-1 m-0">FAQ`S</p>
+                          <p [ngStyle]="{'display':router.url=='/menu/t&c' ? 'inline-block' : 'none' }"  class="text-light fw-medium fs-5 py-1 m-0">Terms & Conditions</p>
+                          <p [ngStyle]="{'display':router.url=='/menu/privacy-policy' ? 'inline-block' : 'none' }"  class="text-light fw-medium fs-5 py-1 m-0">Privacy Policy</p>
+                          <p [ngStyle]="{'display':router.url=='/menu/legalities' ? 'inline-block' : 'none' }"  class="text-light fw-medium fs-5 py-1 m-0">Legalities</p>
+                          <p [ngStyle]="{'display':router.url=='/menu/withdraw-money' ? 'inline-block' : 'none' }"  class="text-light fw-medium fs-5 py-1 m-0">Verify Account</p>
+                          <p [ngStyle]="{'display':router.url=='/menu/scratch-card' ? 'inline-block' : 'none' }"  class="text-light fw-medium fs-5 py-1 m-0">Scratch Cards</p>
+                          <p [ngStyle]="{'display':router.url=='/menu/notify' ? 'inline-block' : 'none' }"  class="text-light fw-medium fs-5 py-1 m-0">Notification</p>
+                          <!-- <p [ngStyle]="{'display':router.url=='/menu/how-to-play' ? 'inline-block' : 'none' }"  class="text-light fw-medium fs-5 py-1 m-0">How To Play</p> -->
+
+                      </div>
+                      <div [ngStyle]="{'display':router.url=='/menu/home'|| router.url=='/menu/contests'|| router.url=='/menu/wallet' || router.url=='/menu/more' ? 'block' : 'none' }" >
+                          <img src="https://www.myteam11.com/fantasy-sports/assets/images/head-logo.png" alt="myteam11-logo" height="30px">
+                      </div>
+                      <div [ngStyle]="{'display':router.url=='/menu/home'|| router.url=='/menu/contests'|| router.url=='/menu/wallet' || router.url=='/menu/more' ? 'flex' : 'none' }" >
+                          <div class="d-flex px-2" >
+                              <button class="btn p-1 showingpointer" routerLink="wallet" >
+                               <span style="font-size: 1rem;"> {{_apiService.user_details?.walletamaount|currency:'INR':'symbol':'1.0'}} </span> <i class="bi bi-wallet" style="font-size: 1rem;"></i>
+                              </button>
+                            </div>
+                            <div class="d-flex px-2">
+                              <button class="btn p-1" routerLink="notify"  >
+                                <i class="bi bi-bell-fill" style="font-size: 20px;"></i>
+                            </button>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="d-flex  flex-column" *ngIf="router.url=='/menu/my-profile'">
+                      <div class="d-flex justify-content-center">
+                        <img src={{_apiService.user_details?.image}} alt="user-profile" height="100">
+                      </div>
+                      <p class="text-center mt-1 text-light ">{{_apiService.user_details?.email}} <i class="ps-1 bi bi-pencil-square showingpointer"></i></p>
+                    </div>
+              </div>
+
+          </div>
+              <div class="innerDIV">
+                  <div class="childiv">
+                      <div style="margin-top: 85px;" [ngStyle]="{'margin-bottom':  router.url=='/menu/addcash'? '0px' : '90px' }">
+                          <router-outlet ></router-outlet>
+                  </div>
+
+              </div>
+              </div>
+              <div class="bottomFotter bg-white" *ngIf="((router.url=='/menu/home')||(router.url=='/menu/contests')||(router.url=='/menu/wallet')||(router.url=='/menu/more')) "  >
+                  <nav class="navbar navbar-expand card bg-light m-0" style="box-shadow: 1px 0px 20px 0px #17171782" >
+                      <div class="w-100">
+                        <ul class="navbar-nav mx-auto d-flex justify-content-around " #footerMenu>
+                          <li class="nav-item p-sm-1 global-hover-effect" *ngFor="let item of menuOptions">
+                            <a class="nav-link " [ngClass]="{'active': router.url==item.url}" [routerLink]="[item.link]" (click)="typeOfSports($event, item)">
+                              <span class="d-block text-center" style="height: 30px; font-size: 28px;">  <i [class]="item.logo"></i></span>
+                              {{item.name}} </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </nav>
+              </div>
+              <div class="bottomFotter d-flex flex-column w-100 "*ngIf="router.url=='/menu/feedback'">
+                <button mat-raised-button color="primary" class="mt-5 py-4">SUBMIT</button>
+              </div>
+          </div>
+  </div>
+      </div>

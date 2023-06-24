@@ -1,0 +1,477 @@
+<div style="min-height: 438px; margin-top: 84px; margin-bottom: 90px;">
+  <div class="container p-0 m-0">
+    <div class="row p-0 m-0">
+      <div class="col-12 pt-2 mb-3">
+        <div class="d-flex card-box  bg-white flex-column ">
+          <p class="px-3 pt-3 fw-bold"> Fantasy Point System</p>
+          
+              <mat-accordion>
+                <mat-expansion-panel class="mb-2" [expanded]="true">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Batting Points
+                    </mat-panel-title>
+
+                  </mat-expansion-panel-header>
+                  <div class="d-flex w-100">
+                    <table class="table table-striped" style="font-size: 11px ;">
+                      <thead>
+                        <tr>
+                          <th scope="col">Type</th>
+                          <th scope="col">Points</th>
+                        </tr>
+                      </thead>
+                      <tbody class="table-group-divider">
+                        <tr>
+                          <td>Run</td>
+                          <td>+1</td>
+                        </tr>
+                        <tr>
+
+                          <td>Playing 11</td>
+                          <td>+2</td>
+                        </tr>
+                        <tr>
+                          <td>Boundary Bonus</td>
+                          <td>+1</td>
+                        </tr>
+                        <tr>
+                          <td>Six Bonus</td>
+                          <td>+2</td>
+                        </tr>
+                        <tr>
+                          <td>30 Runs Bonus </td>
+                          <td>+2</td>
+                        </tr>
+                        <tr>
+                          <td>Half-century Bonus</td>
+                          <td>+6</td>
+                        </tr>
+                        <tr>
+                          <td>Century Bonus</td>
+                          <td>+14</td>
+                        </tr>
+                        <tr>
+                          <td>150-run Bonus</td>
+                          <td>NA</td>
+                        </tr>
+                        <tr>
+                          <td>200-run Bonus</td>
+                          <td>NA</td>
+                        </tr>
+                        <tr>
+                          <td>Dismissal For A Duck </td>
+                          <td>-2</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel class="mb-2" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Bowling Points
+                    </mat-panel-title>
+
+                  </mat-expansion-panel-header>
+                  <div class="d-flex flex-column w-100">
+                    <table class="table table-striped" style="font-size: 11px ;">
+                      <thead>
+                        <tr>
+                          <th scope="col">Type</th>
+                          <th scope="col">Points</th>
+                        </tr>
+                      </thead>
+                      <tbody class="table-group-divider">
+                        <tr>
+                          <td>Wicket (excluding run out)</td>
+                          <td>+25</td>
+                        </tr>
+                        <tr>
+
+                          <td>2-wicket haul bonus</td>
+                          <td>NA</td>
+                        </tr>
+                        <tr>
+                          <td>3-wicket haul bonus</td>
+                          <td>+4</td>
+                        </tr>
+                        <tr>
+                          <td>4-wicket haul bonus</td>
+                          <td>+8</td>
+                        </tr>
+                        <tr>
+                          <td>5-wicket haul bonus</td>
+                          <td>+14</td>
+                        </tr>
+                        <tr>
+                          <td>10-wicket haul bonus</td>
+                          <td>NA</td>
+                        </tr>
+                        <tr>
+                          <td>Maiden over</td>
+                          <td>+10</td>
+                        </tr>
+                        <tr>
+                          <td>Bonus (LBW/Bowled)</td>
+                          <td>+5</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <hr>
+                    <ul>
+                      <li style="font-size: 11px ;" class="mb-2">
+                        No fantasy points will be awarded for a maiden over bowled in The Hundred Cricket Tournament.
+                      </li>
+                      <li style="font-size: 11px ;" class="mb-2">
+                        Wicket (excluding run-out) includes stumped, caught out, and hit wicket. In case of a Run-out,
+                        the points for the wicket are given to the person who throws the ball. However, in a case where
+                        the batsman is stumped the points are awarded to the wicket keeper and the bowler is awarded
+                        points for a wicket
+                      </li>
+                      <li style="font-size: 11px ;" class="mb-2">
+                        Bonus points for 10-wicket haul will be awarded at the end of the 2nd innings of the match. The
+                        points for 10-wicket haul shall only be awarded for Test matches.
+                      </li>
+                      <li style="font-size: 11px ;" class="mb-2">
+                        Any player qualifying for 10-wicket haul along with any other haul like 2-wicket, 3-wicket,
+                        4-wicket or 5-wicket, shall get bonus point for the 10-wicket haul as well as the other
+                        qualifying haul
+                      </li>
+                    </ul>
+                  </div>
+                </mat-expansion-panel>
+                <mat-expansion-panel class="mb-2" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Fielding Points
+                    </mat-panel-title>
+
+                  </mat-expansion-panel-header>
+                  <div class="d-flex flex-column w-100">
+                    <table class="table table-striped" style="font-size: 11px ;">
+                      <thead>
+                        <tr>
+                          <th scope="col">Type</th>
+                          <th scope="col">Point</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Catch</td>
+                          <td>+8</td>
+                        </tr>
+                        <tr>
+                          <td>Stumping</td>
+                          <td>+10</td>
+                        </tr>
+                        <tr>
+                          <td>Runout (Direct)</td>
+                          <td>+10</td>
+                        </tr>
+                        <tr>
+                          <td>Runout (Not a direct hit)</td>
+                          <td>+6/6</td>
+                        </tr>
+                        <tr>
+                          <td>3 catch haul bonus</td>
+                          <td>+4</td>
+                        </tr>
+                        <tr>
+                          <td>4 catch haul bonus</td>
+                          <td>+6</td>
+                        </tr>
+                        <tr>
+                          <td>5 catch haul bonus</td>
+                          <td>+8</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <hr>
+                    <ul>
+                      <li style="font-size: 11px ;" class="mb-2">
+                        Any fielder catching three or more catches in an inning shall be awarded a catch-haul bonus. The
+                        bonus shall only be applicable in case the total number of catches by a player in a particular
+                        inning qualify for the bonus
+                      </li>
+                      <li style="font-size: 11px ;" class="mb-2">
+                        The points for Runout (not a direct hit) will be split equally among the last 2 players
+                        involved.
+                      </li>
+
+                    </ul>
+                  </div>
+                </mat-expansion-panel>
+                <mat-expansion-panel class="mb-2" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Strike Rate
+                    </mat-panel-title>
+
+                  </mat-expansion-panel-header>
+                  <div class="d-flex flex-column w-100">
+                    <table class="table table-striped" style="font-size: 11px ;">
+                      <thead>
+                        <tr>
+                          <th scope="col">Type</th>
+                          <th scope="col">Point</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Applicable for players batting minimum balls</td>
+                          <td>10 Balls</td>
+                        </tr>
+                        <tr>
+                          <td>Between 120-140 runs per 100 balls</td>
+                          <td>+2</td>
+                        </tr>
+                        <tr>
+                          <td>Between 140.01-160 runs per 100 balls</td>
+                          <td>+4</td>
+                        </tr>
+                        <tr>
+                          <td>Above 160 runs per 100 balls</td>
+                          <td>+6</td>
+                        </tr>
+                        <tr>
+                          <td>Between 60-70 runs per 100 balls</td>
+                          <td>-1</td>
+                        </tr>
+                        <tr>
+                          <td>Between 50-59.9 runs per 100 balls</td>
+                          <td>-2</td>
+                        </tr>
+                        <tr>
+                          <td>Below 50 runs per 100 balls</td>
+                          <td>-3</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <hr>
+                    <ul>
+                      <li style="font-size: 11px ;" class="mb-2">
+                        The positive points for Strike Rate will be awarded to all the players and in case of
+                        deductions, the points for negative strike rate will be deducted for all players except bowlers.
+                      </li>
+                    </ul>
+                  </div>
+                </mat-expansion-panel>
+                <mat-expansion-panel class="mb-2" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Economy Rate
+                    </mat-panel-title>
+
+                  </mat-expansion-panel-header>
+                  <div class="d-flex flex-column w-100">
+                    <table class="table table-striped" style="font-size: 11px ;">
+                      <thead>
+                        <tr>
+                          <th scope="col">Type</th>
+                          <th scope="col">Point</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Applicable for players bowling minimum overs</td>
+                          <td>2 overs</td>
+                        </tr>
+                        <tr>
+                          <td>Below 4 runs per over</td>
+                          <td>+6</td>
+                        </tr>
+                        <tr>
+                          <td>Between 4-4.99 runs per over</td>
+                          <td>+4</td>
+                        </tr>
+                        <tr>
+                          <td>Between 5-6 runs per over</td>
+                          <td>+2</td>
+                        </tr>
+                        <tr>
+                          <td>Between 9-10 runs per over</td>
+                          <td>-2</td>
+                        </tr>
+                        <tr>
+                          <td>Between 10.01-11 runs per over</td>
+                          <td>-4</td>
+                        </tr>
+                        <tr>
+                          <td>Above 11 runs per over</td>
+                          <td>-6</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <hr>
+                    <ul>
+                      <li style="font-size: 11px ;" class="mb-2">
+                        The points for Economy Rate will be awarded to all the players but in case of deductions, the
+                        points for negative economy rate will be deducted only for all- rounders and bowlers.
+                      </li>
+                      <li style="font-size: 11px ;" class="mb-2">
+                        The economy rate in case of T20 is counted in 2nd over, in case of ODI in 5th over, not counted
+                        in case of Test Match & from the first over in case of T10.
+                      </li>
+                    </ul>
+                  </div>
+                </mat-expansion-panel>
+                <mat-expansion-panel class="mb-2" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Other Terms & Conditions
+                    </mat-panel-title>
+
+                  </mat-expansion-panel-header>
+                  <div class="d-flex flex-column w-100">
+                    <hr>
+                    <ul>
+                      <li style="font-size: 11px ;" class="mb-2">
+                        The captain and vice-captain you choose to lead your team are awarded 2x and 1.5x points of the
+                        original total they score. However, in case of the deductions, the points of your captain are
+                        deducted as 2x only. The same is applicable in case of vice-captain.
+                      </li>
+                      <li style="font-size: 11px ;" class="mb-2">
+                        In case a substitute replaces any on-field player in any circumstance, then the substitute will
+                        not be awarded any points for his/her part on the field. However, in case a player is announced
+                        as a Concussion Substitute, then the player shall be awarded (2) points for making an appearance
+                        on the field along with the points awarded on the basis of his/her on-field performance.
+                      </li>
+                      <li style="font-size: 11px ;" class="mb-2">
+                        In case any on-field player is transferred in the middle of the series or game or already
+                        scheduled update, then such change shall not be reflected in the MyTeam11 roster immediately.
+                        The change might be reflected from the next scheduled update. The player will be available for
+                        selection on MyTeam11 amid the change made between the game or already scheduled update, but the
+                        player will not be awarded any points in MyTeam11.
+                      </li>
+                      <li style="font-size: 11px ;" class="mb-2">
+                        MyTeam11 uses various reliable sources for collecting data to ease point tabulation, and once a
+                        match has been marked as completed, the points are allotted, the winners are declared, and the
+                        winnings are distributed, no further adjustments will be made. However, until the status of the
+                        game is not shown as completed and is shown to be “In Process,” the points are subject to
+                        change.
+                      </li>
+                      <li style="font-size: 11px ;" class="mb-2">
+                        The players are awarded starting points on the basis of the announcements made regarding their
+                        inclusion in the playing team for the game. In a scenario wherein a player, after being included
+                        in the team sheet for the match is unable to start the match, the player will not be awarded any
+                        points. However, the points shall be awarded to any player who acts as a replacement of such
+                        players who were included in the team sheet, but were unable to start the match and participate
+                        in the game.
+                      </li>
+                      <li style="font-size: 11px ;" class="mb-2">
+                        If a match is being completed through the D/L method and a team plays for 50 overs in the first
+                        innings, it is mandatory for the other team to play at least 20 overs in ODIs and 5 Overs in
+                        T20s for the second innings.
+                      </li>
+                      <li style="font-size: 11px ;" class="mb-2">
+                        No points will be awarded to the users during the Super Over of the game
+                      </li>
+                    </ul>
+                  </div>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel class="mb-2" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    LIVE Fantasy Terms & Conditions
+                  </mat-panel-title>
+
+                </mat-expansion-panel-header>
+                <div class="d-flex flex-column w-100">
+                  <hr>
+                  <ul>
+                    <li style="font-size: 11px ;" class="mb-2">
+                      A user is allowed to choose 7 players in LIVE FANTASY and 2nd Innings. Out of these seven players,
+                      a maximum of 6 players can be selected from one team. There is no restriction on mandatory
+                      selection of all-rounders, batters, bowlers or wicket keepers. A user will be allocated a total of
+                      65 credit points to create a team
+                    </li>
+                    <li style="font-size: 11px ;" class="mb-2">
+                      Users will be asked to choose four players from their team who will fetch 4x,3x,2x and 1.5x
+                      points, respectively. Rest of the three players will fetch 1x points. Unlike normal fantasy where
+                      a user gets to choose Captain and Vice-Captain for 2x and 1.5x points respectively, it is little
+                      different in LIVE fantasy.
+                    </li>
+                    <li style="font-size: 11px ;" class="mb-2">
+                      Please note that users have to create separate teams for each LIVE fantasy slot and 2nd Innings.
+                    </li>
+                    <li style="font-size: 11px ;" class="mb-2">
+                      The stats (runs, wicket, strike rate, economy rate etc.) of the players will vary for each
+                      category. For example, a batsman who is batting from 1st over and plays till the 10th over and if
+                      a user plays LIVE fantasy in 5.1 to 9.6 over, the stats will be considered only for the chosen
+                      slot, which is 5.1-9.6 over.
+                    </li>
+                    <li style="font-size: 11px ;" class="mb-2">
+                      MyTeam11 will declare the match complete in two conditions: Either 40% of the balls in the
+                      selected slot of LIVE fantasy must be bowled or the live match must be declared complete, even if
+                      40% balls are not bowled.
+                      For instance, if the live match is completed or declared complete (by Officials) before 40% of the
+                      balls in your selected slot/innings are bowled, MyTeam11 will declare the slot /innings complete.
+                      Also, the result of the selected slot/innings will be declared on MyTeam11 application on the
+                      ongoing LIVE match if 40% of the balls are bowled or the live match is declared complete before
+                      40% balls are bowled.
+                    </li>
+                    <li style="font-size: 11px ;" class="mb-2">
+                      MyTeam11, at its discretion, can adjust the deadline of the selected slot/innings on the app by up
+                      to 6 balls before the beginning of the LIVE match.
+                    </li>
+                    <li style="font-size: 11px ;" class="mb-2">
+                      Please note that MyTeam11 will not be liable for any fluctuations in the scorecard after the
+                      chosen slot of LIVE fantasy is completed. MyTeam11 will not be responsible for users’ ranking
+                      caused by fluctuations in the respective scorecards.
+                    </li>
+                  </ul>
+                </div>
+              </mat-expansion-panel>
+
+              <mat-expansion-panel class="mb-2" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    The Hundred Cricket T&C
+                  </mat-panel-title>
+
+                </mat-expansion-panel-header>
+                <div class="d-flex flex-column w-100">
+                  <hr>
+                  <ul>
+                    <li style="font-size: 11px ;" class="mb-2">
+                      An inning in the game will comprise of 100 balls and an entire game will last two and a half
+                      hours.
+                    </li>
+                    <li style="font-size: 11px ;" class="mb-2">
+                      The rules & point system of T-20 cricket shall apply to the game on MyTeam11.
+                    </li>
+                    <li style="font-size: 11px ;" class="mb-2">
+                      No fantasy points will be awarded for a maiden over bowled in The Hundred Cricket Tournament.
+                    </li>
+                    <li style="font-size: 11px ;" class="mb-2">
+                      An over in the game shall consist of 5 balls.
+                    </li>
+                    <li style="font-size: 11px ;" class="mb-2">
+                      The point calculation and economy calculation for bowlers will be done on the basis of 5 balls.
+                    </li>
+                    <li style="font-size: 11px ;" class="mb-2">
+                      A bowler will be allowed to deliver up to 2 consecutive overs and 4 overs in whole per game.
+                    </li>
+                    <li style="font-size: 11px ;" class="mb-2">
+                      A strategic time-out of two and a half minutes will be given to each of the bowling side.
+                    </li>
+                    <li style="font-size: 11px ;" class="mb-2">
+                      The powerplay for each side will be of 25 balls (5 overs).
+
+                    </li>
+                    <li style="font-size: 11px ;" class="mb-2">
+                      During the powerplay, two fielders will be allowed outside the initial 30-yard circle. </li>
+                  </ul>
+                </div>
+              </mat-expansion-panel>
+
+            </mat-accordion>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

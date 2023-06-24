@@ -1,0 +1,217 @@
+<div style="min-height: 438px; margin-top: 84px; margin-bottom: 90px;">
+    <div class="container p-0 m-0">
+        <div class="row p-0 m-0">
+            <div class="col-12 pt-2">
+                <div class="d-flex card-box bg-white flex-column ">
+
+                   <div class="d-flex flex-wrap justify-content-center align-items-center px-2 ">
+                        <div class="donate-now d-flex flex-wrap justify-content-center mt-3">
+                            <input type="radio" id="general" name="amount" checked="checked" (click)="showthis($event.target)" />
+                              <label for="general" id="general" class="m-2 p-1">General T&C's</label>
+                            <input type="radio" id="offer" name="amount" (click)="showthis($event.target)"  />
+                              <label for="offer" id="offer" class="m-2 p-1" >Offer T&C's</label>
+                            <input type="radio" id="refer" name="amount" (click)="showthis($event.target)"  />
+                              <label for="refer" id="refer" class="m-2 p-1">Refer and Earn T&C's</label>
+                            <input type="radio" id="live" name="amount" (click)="showthis($event.target)"  />
+                              <label for="live" id="live" class="m-2 p-1">Live Fantasy T&C's</label>
+                          </div>
+                          
+                   </div>
+
+                <div class="mt-4" *ngIf="current_div=='general'">
+                    <h4 class="px-3 pt-4">1. MYTEAM11.COM</h4>
+                    <p style="font-size: 14px;" class="px-3">
+                        The Terms & Conditions of MyTeam11 is an electronic agreement between the user (herein after you, your, user) & MyTeam11 (hereinafter app, the website, platform or MyTeam11) defining the extent of a user’s access and usage of the services provided by the platform.
+                    </p>
+                    <p style="font-size: 14px;" class="px-3">
+                        The MyTeam11 app is neither affiliated by nor associated to any sort of private or government Sports leagues and tournaments until and unless stated by the organization. In addition to this, the MyTeam11 app is not related and does not claim any official status with any of the official or non-official sports team or sportsperson.
+                    </p>
+                    <p style="font-size: 14px;" class="px-3">
+                        MyTeam11 used as a single entity anywhere in this document and all sections of T&C, should mean and constitutes of MyTeam11.com website and MyTeam11 app on both android and iOS store.
+                    </p>
+
+                    <h4 class="px-3 pt-4">2. PRIVACY POLICY</h4>
+                    <p style="font-size: 14px;" class="px-3">
+                        All sort of user information collected by MyTeam11 in terms of personal details and payment information at the time of registration is subjected to the Privacy Policy of MyTeam11 which can be reviewed by the users at Privacy Policy.
+                    </p>
+                </div>
+
+                <div class="mt-4" *ngIf="current_div=='offer'">
+                    <h4 class="px-3 pt-4">Terms & Conditions for Offers</h4>
+                    <p style="font-size: 14px;" class="px-3">
+                        The MyTeam11 platform, from time to time, for the interest and pleasure of its users, announces various “OFFERS” (further referred as Offers) on its platform with a limited validity period. The users availing the Offers announced on the MyTeam11 platform are required to abide by certain Terms & Conditions of the Offers. The Terms & Conditions for Offers announced on MyTeam11 platform comprises of:
+                    </p>
+                    <ul>
+                        <li>
+                            <p style="font-size: 14px;" class="px-3 ">
+                                The Offers provided on the MyTeam11 platform can only be availed by the registered users of MyTeam11. A person who is not registered with MyTeam11 platform is not authorised to take benefit of the Offers announced on MyTeam11.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="font-size: 14px;" class="px-3 ">
+                                The Offers announced on the MyTeam11 platform are only open to the people of India as of now. The people residing out of India are not eligible for availing the Offers provided on MyTeam11 platform.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="font-size: 14px;" class="px-3 ">
+                                The users should abide by the fair Play Terms of MyTeam11 while availing the Offers provided on MyTeam11 viz the users should not use any fake accounts in order to avail the benefits of the Offers provided on MyTeam11.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="font-size: 14px;" class="px-3 ">
+                                Please note that while some offers on MyTeam11 may only be available for single use by a single user, other offers may be availed multiple times by a single user, depending on the offer. Please refer to each offer's specific terms and conditions to determine whether it can be availed more than once. The terms and conditions of each offer are communicated to the user through various modes of communication like In-App banners, APNs, Pop-ups, Emails etc.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="font-size: 14px;" class="px-3 ">
+                                The Offers provided on the MyTeam11 platform can only be availed by the registered users of MyTeam11. A person who is not registered with MyTeam11 platform is not authorised to take benefit of the Offers announced on MyTeam11.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="font-size: 14px;" class="px-3 ">
+                                Please note that all the Cash Bonus earned on different stages of the application will be reflected under Credit Bonus sections. These stages include Cash Bonus earned on sign-up, refer & earn, surprise offers, daily offers & so on.
+                            </p>
+                        </li>
+
+                    </ul>
+                    <p style="font-size: 14px;" class="px-3 fw-bold">
+                        In these terms and across all communications, references to CASH BONUS shall mean MyTeam11 Credits, which can be used and utilized on MyTeam11 platform only. The terms "CASH BONUS" and "MyTeam11 Credits" are interchangeable. Both the terms wherever used, would only mean to "MyTeam11 Credits".
+                    </p>
+
+                    <p style="font-size: 14px;" class="px-3">
+                        MyTeam11 shall only be responsible for offers made available on the application/website and shall not be held liable for any offers made available by any third-party sources, which may or may not be associated with MyTeam11.
+                    </p>
+                </div>
+
+                <div class="mt-4" *ngIf="current_div=='refer'">
+                    <h4 class="px-3 pt-4">Refer & Earn T&C</h4>
+                    <p style="font-size: 14px;" class="px-3">
+                        The Refer & Earn program of MyTeam11 let the user earn Cash Bonus by inviting his/her friend to join MyTeam11. The referent can earn up to ₹125 Cash Bonus while the referrer can earn up to ₹1000 Cash Bonus in the wallet under this promotion scheme in compliance with various T&C which include:
+                    </p>
+                    <h5 class="px-3 pt-2 ">How to get ₹1000 Cash Bonus?</h5>
+                    <h6 class="px-3 pt-3">PAN Card Verification of Referent</h6>
+                    <p style="font-size: 14px;" class="px-3">
+                        Task: When the Referent verifies his/her PAN details on MyTeam11
+                        Your Cash Bonus: ₹50 Cash Bonus in the wallet
+                    </p>
+                    <h6 class="px-3 pt-3">Add Cash</h6>
+                    <p class=" px-3">
+                        Get Paid Upto ₹1000 Cash Bonus, Every Time Your Friend Adds Money In The Wallet
+                    </p>
+                    <p style="font-size: 14px;" class="px-3">
+                        Every time your friend adds ₹50 or more you will receive 5% of the amount as Cash Bonus in your wallet.
+                        (Max. Cash Bonus for promotion to be earned = ₹1000 per referral)
+                        You will not receive any Cash Bonus for any promotion scheme by your referred friend during any on-going offers on MyTeam11.
+                    </p>
+                    
+                    <h4 class="px-3 pt-4">Refer & Earn Leaderboard Terms & Conditions</h4>
+                    <p style="font-size: 14px;" class="px-3">
+                        Users must abide by the following conditions to participate & win in Refer & Earn Program:
+                    </p>
+                    <ul>
+                        <li>
+                            <p style="font-size: 14px;" class="px-3 ">
+                                A referral will only be applicable for the leaderboard ranking when they refer a minimum of 20 referees/users on the application wherein at least 50% of their referees must have participated in a paid contest on MyTeam11 application.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="font-size: 14px;" class="px-3 ">
+                                The Offers announced on the MyTeam11 platform are only open to the people of India as of now. The people residing out of India are not eligible for availing the Offers provided on MyTeam11 platform.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="font-size: 14px;" class="px-3 ">
+                                A referral will only be applicable for leaderboard ranking when their respective referees participate in a paid contest above ₹25 entry fee on MyTeam11 application. Referees can use Cash Bonus to join the paid contest.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="font-size: 14px;" class="px-3 ">
+                                The leaderboard ranking will be based on the following fulfilments:
+                            </p>
+                            <table class="table table-striped" style="font-size: 11px ;"><thead><tr><th>Rank Number</th><th>Min. number of users/referee referred by you</th><th>Min. number of users/referee that must participate in paid contest</th></tr></thead><tbody><tr><td>1</td><td>150</td><td>75</td></tr><tr><td>2</td><td>120</td><td>60</td></tr><tr><td>3</td><td>100</td><td>50</td></tr><tr><td>4</td><td>80</td><td>40</td></tr><tr><td>5</td><td>70</td><td>35</td></tr><tr><td>6</td><td>60</td><td>30</td></tr><tr><td>7</td><td>50</td><td>25</td></tr><tr><td>8</td><td>40</td><td>20</td></tr><tr><td>9</td><td>30</td><td>15</td></tr><tr><td>10</td><td>20</td><td>10</td></tr></tbody></table>
+                        </li>
+                        <li>
+                            <p style="font-size: 14px;" class="px-3 ">
+                                If any two or more referrers have referred the same number of users, then the referrer with the most number of users that have played paid contests will be considered higher in leaderboard ranking. For instance, user A and user B have referred 150 users on MyTeam11. If the number of referees/friends of user A who have played paid contests is 79 while the number of referees of user B who have played paid contests is 76, then user A will stand at a higher ranking than user B.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="font-size: 14px;" class="px-3 ">
+                                If referrers refer the same number of users on MyTeam11 with the same number of referees who have played paid contests, then the winnings of the same ranking and the rank below will be split in two between two referrers. For example, User A and User B both have referred 100 people and out of those 50 referees have played paid contests, then User A and User B will stand at ranks 3 & 4 where the prize amount (worth the prize at rank 3 & 4) will be distributed equally to both users.
+                            </p>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="mt-4" *ngIf="current_div=='live'">
+                    <p style="font-size: 14px;" class="px-3 pt-4">
+                        Now you can create your fantasy cricket teams even after the match begins. MyTeam11 brings an extraordinary LIVE FANTASY feature. Whether you forgot to create your team before the start of the match or wish to be hooked throughout the match, MyTeam11 got you covered. LIVE Fantasy gives you a second chance to earn more while analysing the match yourself.
+                    </p>
+                    <h4 class="px-3 pt-4">What is LIVE Fantasy?</h4>
+                    <p style="font-size: 14px;" class="px-3">
+                        The MyTeam11 app is neither affiliated by nor associated to any sort of private or government Sports leagues and tournaments until and unless stated by the organization. In addition to this, the MyTeam11 app is not related and does not claim any official status with any of the official or non-official sports team or sportsperson.
+                    </p>
+                    <p style="font-size: 14px;" class="px-3">
+                        LIVE Fantasy allows users on the application to create their teams during the match.
+                    </p>
+
+                    <h4 class="px-3 pt-4">2. PRIVACY POLICY</h4>
+                    <p style="font-size: 14px;" class="px-3">
+                        Live Fantasy benefits a user in the following ways:
+                    </p>
+
+                    <ul>
+                        <li>
+                            <p style="font-size: 14px;" class="px-3 ">
+                                With LIVE Fantasy, a user can analyse the performance of the players as the match proceeds and accordingly create teams.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="font-size: 14px;" class="px-3 ">
+                                This way, you Play More and Win More!
+                            </p>
+                        </li>
+                        <li>
+                            <p style="font-size: 14px;" class="px-3 ">
+                                With Live fantasy, a user can choose the slots/overs as per their convenience along with fantasy team creation for the entire match.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="font-size: 14px;" class="px-3 ">
+                                With Live fantasy, users can also participate and create separate teams for 2nd Innings, once the first innings conclude.
+                            </p>
+                        </li>
+                        <h4 class="px-3 pt-2">Categories/Slots for LIVE Fantasy</h4>
+                        <li>
+                            <table class="table table-bordered table-striped" style="font-size: 11px ;" ><thead><tr><th scope="col" colspan="3">T20 Format</th><th scope="col" colspan="3">ODI Format</th><th scope="col" colspan="3">T10 Format</th></tr><tr><th scope="col">Slots</th><th scope="col">Over</th><th scope="col">Balls</th><th scope="col">Slots</th><th scope="col">Over</th><th scope="col">Balls</th><th scope="col">Slots</th><th scope="col">Over</th><th scope="col">Balls</th></tr><tr><th scope="col">1st Innings</th><th scope="col"></th><th scope="col"></th><th scope="col">1st Innings</th><th scope="col"></th><th scope="col"></th><th scope="col">1st Innings</th><th scope="col"></th><th scope="col"></th></tr></thead><tbody><tr><th style="white-space:nowrap" scope="row">Slot 1</th><td style="white-space:nowrap">6-10</td><td style="white-space:nowrap">5.1-9.6</td><th style="white-space:nowrap" scope="row">Slot 1</th><td style="white-space:nowrap">11-20</td><td style="white-space:nowrap">10.1-19.6</td><th style="white-space:nowrap" scope="row">Slot 1</th><td style="white-space:nowrap">6-10</td><td style="white-space:nowrap">5.1-9.6</td></tr><tr><th style="white-space:nowrap" scope="row">Slot 2</th><td style="white-space:nowrap">11-15</td><td style="white-space:nowrap">10.1-14.6</td><th style="white-space:nowrap" scope="row">Slot 2</th><td style="white-space:nowrap">21-30</td><td style="white-space:nowrap">20.1-29.6</td><th style="white-space:nowrap" scope="row"></th><td style="white-space:nowrap"></td><td style="white-space:nowrap"></td></tr><tr><th style="white-space:nowrap" scope="row">Slot 3</th><td style="white-space:nowrap">16-20</td><td style="white-space:nowrap">15.1-19.6</td><th style="white-space:nowrap" scope="row">Slot 3</th><td style="white-space:nowrap">31-40</td><td style="white-space:nowrap">30.1-39.6</td><th style="white-space:nowrap" scope="row"></th><td style="white-space:nowrap"></td><td style="white-space:nowrap"></td></tr><tr><th style="white-space:nowrap" scope="row"></th><td style="white-space:nowrap"></td><td style="white-space:nowrap"></td><th style="white-space:nowrap" scope="row">Slot 4</th><td style="white-space:nowrap">41-50</td><td style="white-space:nowrap">40.1-49.6</td><th style="white-space:nowrap" scope="row"></th><td style="white-space:nowrap"></td><td style="white-space:nowrap"></td></tr><tr><th style="white-space:nowrap" scope="col">2st Innings</th><th scope="col"></th><th scope="col"></th><th style="white-space:nowrap" scope="col">2st Innings</th><th scope="col"></th><th scope="col"></th><th style="white-space:nowrap" scope="col">2st Innings</th><th scope="col"></th><th scope="col"></th></tr><tr><th style="white-space:nowrap" scope="row">Slot 4</th><td style="white-space:nowrap">1-5</td><td style="white-space:nowrap">0.1-4.6</td><th style="white-space:nowrap" scope="row">Slot 5</th><td style="white-space:nowrap">11-20</td><td style="white-space:nowrap">10.1-19.6</td><th style="white-space:nowrap" scope="row">Slot 2</th><td style="white-space:nowrap">1-5</td><td style="white-space:nowrap">0.1-4.6</td></tr><tr><th style="white-space:nowrap" scope="row">Slot 5</th><td style="white-space:nowrap">6-10</td><td style="white-space:nowrap">5.1-9.6</td><th style="white-space:nowrap" scope="row">Slot 6</th><td style="white-space:nowrap">21-30</td><td style="white-space:nowrap">20.1-29.6</td><th style="white-space:nowrap" scope="row">Slot 3</th><td style="white-space:nowrap">6-10</td><td style="white-space:nowrap">5.1-9.6</td></tr><tr><th style="white-space:nowrap" scope="row">Slot 6</th><td style="white-space:nowrap">11-15</td><td style="white-space:nowrap">10.1-14.6</td><th style="white-space:nowrap" scope="row">Slot 7</th><td style="white-space:nowrap">31-40</td><td style="white-space:nowrap">30.1-39.6</td><th style="white-space:nowrap" scope="row"></th><td style="white-space:nowrap"></td><td style="white-space:nowrap"></td></tr><tr><th style="white-space:nowrap" scope="row">Slot 7</th><td style="white-space:nowrap">16-20</td><td style="white-space:nowrap">15.1-19.6</td><th style="white-space:nowrap" scope="row">Slot 8</th><td style="white-space:nowrap">41-50</td><td style="white-space:nowrap">40.1-49.6</td><th style="white-space:nowrap" scope="row"></th><td style="white-space:nowrap"></td><td style="white-space:nowrap"></td></tr><tr><th style="white-space:nowrap" colspan="3">Slot 8: Entire Second Innings</th><th style="white-space:nowrap" colspan="3">Slot 9: Entire Second Innings</th><th style="white-space:nowrap" colspan="3">Slot 4: Entire Second Innings</th></tr></tbody></table>
+
+                        </li>
+                        <p style="font-size: 14px;" class="px-3 ">
+                            Please note that not all matches will have all the slots available. To check the listing of all available slots in the match, you can check the availability of the same on MyTeam11 application, as you select the match.
+                        </p>
+                        <p style="font-size: 14px;" class="px-3">
+                            The 2nd Innings contest will be activated after the full match category is closed. Users will be allowed to create teams and join contests for LIVE fantasy, once the full match category is closed.
+                        </p>
+                    </ul>
+                    <h3 class="px-4">LIVE Fantasy Terms & Conditions</h3>
+                    <ul>
+                        <li>
+                            <p style="font-size: 14px;" class="px-3 ">
+                                If any two or more referrers have referred the same number of users, then the referrer with the most number of users that have played paid contests will be considered higher in leaderboard ranking. For instance, user A and user B have referred 150 users on MyTeam11. If the number of referees/friends of user A who have played paid contests is 79 while the number of referees of user B who have played paid contests is 76, then user A will stand at a higher ranking than user B.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="font-size: 14px;" class="px-3 ">
+                                If referrers refer the same number of users on MyTeam11 with the same number of referees who have played paid contests, then the winnings of the same ranking and the rank below will be split in two between two referrers. For example, User A and User B both have referred 100 people and out of those 50 referees have played paid contests, then User A and User B will stand at ranks 3 & 4 where the prize amount (worth the prize at rank 3 & 4) will be distributed equally to both users.
+                            </p>
+                        </li>
+
+                    </ul>
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

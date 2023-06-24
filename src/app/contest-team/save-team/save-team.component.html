@@ -1,0 +1,163 @@
+<div class="row">
+    <div class="col-5 p-0 sm-mx-auto rounded bg-light position-relative cardContainer">
+        <div class="innerDIV">
+            <div class="childiv">
+    <div class="col-12 p-0 m-0" style="min-height: 660px;">
+        <div class="col-12 rounded bg-white p-0 mx-0">
+    <div class="row p-0 m-0  topNavbar bg-light">
+    <!-- NavBar Code -->
+    <div class="row p-0 m-0">
+        <div class="col-12 bg-dark p-0 rounded-top">
+            <div class="d-flex justify-content-between align-items-center mt-3 mb-2">
+                <div class="">
+                    <button mat-button (click)="goingback()" >
+                    <mat-icon class="text-light fw-bold showingpointer ">keyboard_backspace</mat-icon>
+                    </button>
+                    <p class="text-light fw-bold m-0 fs-5  d-inline-block">{{team_Card.team1fullname}} vs {{team_Card.team2fullname}}</p>
+                </div>
+                <div class="d-flex">
+                    <div class="px-2">
+                        <mat-icon class="text-light showingpointer" (click)="route.navigate(['menu/wallet'])">account_balance_wallet</mat-icon>
+                    </div>
+                    <div class="px-2">
+                        <mat-icon class="text-light showingpointer" (click)="route.navigate(['menu/home'])">home</mat-icon>
+                    </div>
+                    <div class="px-2">
+                        <mat-icon class="text-light showingpointer">help</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Team Card -->
+    <div class="row p-0 m-0">
+        <div class="col-12 p-0">
+            <div class="">
+                <p class="fs-4 text-center fw-medium mt-2 mb-1">Choose Captain & Vice Captain</p>
+                <p class="text-center">C Get 2X Points and VC Get 1.5X Points</p>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="row p-0 mx-0" style="margin-top: 150px;">
+              <table class="table mt-5 pt-4">
+            <thead>
+              <tr>
+                <th scope="col">TEAM</th>
+                <th scope="col">PLAYERS</th>
+                <th scope="col">S.BY</th>
+                <th scope="col">%C BY</th>
+                <th scope="col">%VC BY</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let i of myTeam"  >
+                <td><div>
+                        <img src={{i.image}} alt="..." height="50" width="auto">
+                    </div>
+                </td>
+                <td>{{i.name}}
+                    <br><span class="text-muted text-uppercase" style="font-size: 10px;">{{i.role}} ({{i.teamname}})</span>
+                </td>
+                <td>{{i.player_selection_percentage}}%</td>
+                <td>
+                    <input type="radio" name="c" [checked]="i.captain"  (change)="chooseCaptain(i.id)">
+                </td>
+                <td>
+                  
+                    <input type="radio" name="vc"  [checked]="i.vicecaptain" (change)="chooseViceCaptain(i.id)">
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+    </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="bottomFotter d-flex justify-content-center ">
+        <button mat-raised-button [ngStyle]="{'background-color':vic && cap? '#3f51b5' : '#c6c9cc' }" class="p-4 mb-2 px-5" (click)="saveTeam()">Save</button>
+    </div>
+    </div>
+    <div class="col-6 mx-auto p-0 sm-mx-auto rounded bg-primary position-relative cardContainer" style="overflow-y: hidden;" >
+        <div class="bg-light" style="background-image: url(https://myteam11main.s3.ap-south-1.amazonaws.com/images/static/cricket_live_fantasy_bg.png); min-height: 100vh; background-size: 100% 100%;">
+           <div class="row p-0 m-0 pt-2" *ngFor="let show of my_team">
+            <div class="col-12 p-0 m-0">
+                <p class="text-center m-0 text-uppercase fw-bold" style="color: rgba(44, 66, 39, 0.925);">{{show.title}}</p>
+            </div>
+            <div class="col-12 p-0 m-0 d-flex justify-content-around align-items-center" style="height: 150px;">
+                <ng-container *ngFor="let i of show.list">
+                <div class="d-flex flex-column align-items-center">
+                    <div class="position-relative">
+                    <img src={{i.image}} alt="player" height="auto" width="50" >
+                    <span *ngIf="i.vicecaptain" class="position-absolute top-0 start-100 translate-middle badge rounded viceCap fs-6">VC</span>
+                    <span *ngIf="i.captain" class="position-absolute top-0 start-0 translate-middle badge rounded cap text-dark fs-6">C</span>
+                    </div>
+                    <p class="m-0 d-inline-block fw-bold text-wrap text-center" ngClass="{{i.team=='team1'?'text-light team-two':'text-dark team-one'}}">{{i.name}}</p>
+                    <p class="m-0 d-inline-block fw-bold text-wrap text-center">
+                        {{ i.credit}} cr
+                    </p>
+                    <span class="text-muted">({{i.teamname}})</span>
+                </div>
+            </ng-container>
+            </div>
+           </div>
+           <!-- <div class="row p-0 m-0 " >
+            <div class="col-12 p-0 m-0">
+                <p class="text-center m-0 text-uppercase fw-bold text-light">Batsman</p>
+            </div>
+            <div class="col-12 p-0 m-0 d-flex justify-content-around align-items-center" style="height: 150px;">
+                <ng-container *ngFor="let i of myTeam" >
+                <div class="d-flex flex-column align-items-center" *ngIf="i.role=='batsman'">
+                    <div class="position-relative">    
+                    <img src={{i.image}} alt="player" height="auto" width="50">
+                    <span *ngIf="i.vicecaptain" class="position-absolute top-0 start-100 translate-middle badge rounded viceCap fs-6">VC</span>
+                    <span *ngIf="i.captain" class="position-absolute top-0 start-0 translate-middle badge rounded cap text-dark fs-6">C</span>
+                    </div>
+                    <p class="m-0 d-inline-block fw-bold text-wrap text-center">{{i.name}}</p>
+                    <span class="text-muted">({{i.teamname}})</span>
+                </div>
+            </ng-container>
+            </div>
+           </div>
+           <div class="row p-0 m-0 ">
+            <div class="col-12 p-0 m-0">
+                <p class="text-center m-0 text-uppercase fw-bold text-light">All-Rounder</p>
+            </div>
+            <div class="col-12 p-0 m-0 d-flex justify-content-around align-items-center " style="height: 120px;">
+                <ng-container *ngFor="let i of myTeam" >
+                <div class="d-flex flex-column align-items-center" *ngIf="i.role=='allrounder'">
+                    <div class="position-relative">
+                        <img src={{i.image}} alt="player" height="auto" width="50">
+                        <span *ngIf="i.vicecaptain" class="position-absolute top-0 start-100 translate-middle badge rounded viceCap fs-6">VC</span>
+                        <span *ngIf="i.captain" class="position-absolute top-0 start-0 translate-middle badge rounded cap text-dark fs-6">C</span>
+                    </div>
+                    <p class="m-0 d-inline-block fw-bold text-wrap text-center">{{i.name}}</p>
+                    <span class="text-muted">({{i.teamname}})</span>
+                </div>
+            </ng-container>
+            </div>
+           </div>
+           <div class="row p-0 m-0 ">
+            <div class="col-12 p-0 m-0">
+                <p class="text-center m-0 text-uppercase fw-bold text-light">Bowlers</p>
+            </div>
+            <div class="col-12 p-0 m-0 d-flex justify-content-around align-items-center" style="height: 120px;">
+                <ng-container *ngFor="let i of myTeam" >
+                <div class="d-flex flex-column align-items-center" *ngIf="i.role=='bowler'">
+                    <div class="position-relative">
+                    <img src={{i.image}} alt="player" height="auto" width="50">
+                    <span *ngIf="i.vicecaptain" class="position-absolute top-0 start-100 translate-middle badge rounded viceCap fs-6">VC</span>
+                    <span *ngIf="i.captain" class="position-absolute top-0 start-0 translate-middle badge rounded cap text-dark fs-6">C</span>
+                    </div>
+                    <p class="m-0 d-inline-block fw-bold text-wrap text-center">{{i.name}}</p>
+                    <span class="text-muted">({{i.teamname}})</span>
+                </div>
+            </ng-container>
+            </div>
+           </div> -->
+        </div>
+    </div>
+    </div>

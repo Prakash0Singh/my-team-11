@@ -1,0 +1,58 @@
+<div style="min-height: 438px; margin-top: 80px; margin-bottom: 90px;">
+    <div class="container p-0 m-0">
+        <div class="row p-0 m-0">
+            <div class="col-12 balance-status pt-1">
+                <div class="d-flex align-items-center bg-white">
+                    <!-- <div class="d-flex align-items-center"> -->
+                        <span style="color: #BFDFFC;font-size: 5rem; padding:0 20px;">₹</span>
+                    <!-- </div> -->
+                    <div class="d-flex w-100 justify-content-between">
+                        <div class="d-flex flex-column">
+                            <p class="m-0 ">Total Balance</p>
+                            <p class="m-0 fs-5 fw-medium"> {{_apiService.user_details?.walletamaount|currency:"INR":"symbol"}}</p>
+                            <p class="m-0 text-primary fw-medium showingpointer" (click)="router.navigate(['menu/transactions'])"><img src="https://www.myteam11.com/fantasy-sports/assets/images/nc_stetment.svg" alt="view"> View Statement</p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <button mat-raised-button color="primary" class="p-3 me-2" (click)="addmorecash()"><mat-icon>add</mat-icon> Add Cash</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 pt-3">
+            <div class="d-flex">
+                <div class="d-flex me-2 bal-card flex-column">
+                    <p class="m-0 ps-2 pt-2 text-muted badge-texts"> Winning </p>
+                    <p class="m-0 px-2 pb-1"> {{_apiService.user_details?.totalwinning|currency:"INR":"symbol"}}</p>
+                </div>
+                <div class="d-flex mx-2 bal-card flex-column">
+                    <p class="m-0 ps-2 pt-2 text-muted badge-texts"> Amount Added </p>
+                    <p class="m-0 px-2 pb-1"> {{_apiService.user_details?.addcashamount|currency:"INR":"symbol"}}</p>
+
+                </div>
+                <div class="d-flex mx-2 bal-card flex-column">
+                    <p class="m-0 ps-2 pt-2 text-muted badge-texts"> Credit Bonus</p>
+                    <p class="m-0 px-2 pb-1"> {{_apiService.user_details?.totalbonus|currency:"INR":"symbol"}}</p>
+
+                </div>
+            </div>
+            </div>
+            <div class="col-12 pt-4">
+                
+                <div class="d-flex card-box global-hover-effect" *ngFor="let i of walletList" (click)="i.title=='Redeem Coupon'?myFunction():router.navigate([i.path])">
+                    <div class="d-flex align-items-center ps-2">
+                        <img src={{i.logo}} alt={{i.title}} width="auto">
+                    </div>
+                    <div class="d-flex flex-column py-3 w-100" >
+                            <span class="fs-5 fw-medium">{{i.title}}</span>
+                            <span class="text-muted ps-1" style="font-size: 12px;">{{i.info}}</span>
+                    </div>
+                    <div class="d-flex  align-items-center">
+                        <button mat-button>
+                            <mat-icon>keyboard_arrow_right</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>

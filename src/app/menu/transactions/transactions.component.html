@@ -1,0 +1,33 @@
+<div  style="min-height: 504px; margin-top: 84px; margin-bottom: 90px;">
+    <div class="container p-0 m-0">
+        <div class="row p-0 m-0">
+            <div class="col-12 p-0">
+              <mat-accordion *ngFor="let data of mytrans_list">
+                <mat-expansion-panel  class="mb-2">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                     Date - {{data.title}}
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <mat-accordion *ngFor="let i of data.list" >
+                    <mat-expansion-panel  class="mb-2" style="background-color: #eaeaeacf;" >
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          {{i.type}}
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <p class="m-0" style="font-size: 11px;"> <span  class="fw-bold">Date :</span> {{i.date_time}}</p> 
+                      <p class="m-0" style="font-size: 11px;"> <span  class="fw-bold">Type :</span> {{i.type}}</p> 
+                      <p class="m-0" style="font-size: 11px;"> <span  class="fw-bold">Amount : </span>{{i.amount|currency:'INR':'symbol'}}</p> 
+                      <p class="m-0" style="font-size: 11px;"> <span  class="fw-bold">Success : </span>{{i.success?'Complete':'Failed'}}</p> 
+                      <code class="m-0" style="font-size: 11px;"> <span  class="fw-bold">Txnid : </span>{{i.txnid}}</code> 
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                </mat-expansion-panel>
+              </mat-accordion>
+
+
+            </div>
+        </div>
+    </div>
+</div>

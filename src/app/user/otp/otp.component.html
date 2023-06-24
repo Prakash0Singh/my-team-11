@@ -1,0 +1,12 @@
+<div class="container-l p-4">
+    <div class="row " style="height: 80vh;">
+        <div class="col-lg-5 col-md-8 col-12 sm-mx-auto rounded bg-white px-4 makeConatinerResponsive">
+            <div class=" d-flex justify-content-center flex-column " style="height: 80vh;" >
+                <div class="p-5 d-flex justify-content-center w-100 align-content-between">
+                    <ng-otp-input  (onInputChange)="onOtpChange($event)"  [config]="{length:4}"></ng-otp-input>
+                </div>
+            </div>
+            <!-- <button mat-raised-button color="primary" class="w-100" (click)="verfyOtp()">Verfy OTP</button> -->
+        </div>
+    </div>
+</div>

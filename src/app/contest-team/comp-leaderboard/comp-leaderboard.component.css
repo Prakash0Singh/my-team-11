@@ -1,0 +1,19 @@
+.live-sore-card{
+background: rgba(0, 0, 0, 0.5);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(10.7px);
+-webkit-backdrop-filter: blur(10.7px);
+}
+.hovereffect:hover{
+    background-color: rgb(201 226 255) !important;
+}
+.blink {
+    width: 8px;
+    height: 8px;
+    background-color: red;
+    border-radius: 100px;
+  }
+  
+  @keyframes blink {
+    50% {opacity: 0;}
+  }

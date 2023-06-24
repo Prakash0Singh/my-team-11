@@ -1,0 +1,89 @@
+<div  style="min-height: 504px; margin-top: 84px; margin-bottom: 90px;">
+    <div class="container p-0 m-0">
+        <div class="row p-0 m-0">
+            <div class="col-12 p-0 ">
+                <div class="d-flex mx-2 flex-column ">
+                    <mat-card>
+                        <mat-card-content>
+                            <form class="example-form">
+                                <mat-form-field class="w-100" appearance="fill" >
+                                  <mat-label>Email</mat-label>
+                                  <input type="email" matInput [formControl]="emailFormControl" placeholder="Enter Email">
+                                  <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                                    Please enter a valid email address
+                                  </mat-error>
+                                  <mat-error *ngIf="emailFormControl.hasError('required')">
+                                    Email is <strong>required</strong>
+                                  </mat-error>
+                                </mat-form-field>
+                                <span style="font-size: 12px;">We send you a verification email to verify your email address.</span>
+                              </form>
+                              
+                        </mat-card-content>
+                    </mat-card>                  
+                </div>
+                <div class="d-flex mx-2 flex-column mt-2 ">
+                    <mat-card>
+                        <mat-card-content style="padding: 6px 10px !important ;">
+                            <form class="example-form">
+                                <mat-form-field class="w-100" appearance="fill" >
+                                  <mat-label>Mobile</mat-label>
+                                  <input type="text" matInput value="123-4323-533">
+                                  <mat-icon matSuffix color="primary">check_circle</mat-icon>
+                                </mat-form-field>
+                              </form>
+                              
+                        </mat-card-content>
+                    </mat-card>                  
+                </div>
+
+                <div class="d-flex mx-2 flex-column  mt-2">
+                    <mat-card>
+                        <mat-card-content style="padding: 6px 10px !important ;">
+                            <form class="example-form">
+                                <mat-form-field class="w-100" appearance="fill" >
+                                  <mat-label>PAN</mat-label>
+                                  <input type="text" matInput value="--">
+                                  <button matSuffix mat-raised-button color="primary">Verify</button>
+                                </mat-form-field>
+                              </form>
+                              
+                        </mat-card-content>
+                    </mat-card>                  
+                </div>
+
+                <div class="d-flex mx-2 flex-column mt-2 ">
+                    <mat-card>
+                        <mat-card-content style="padding: 6px 10px !important ;">
+                            <form class="example-form">
+                                <mat-form-field class="w-100" appearance="fill" >
+                                  <mat-label>Bank</mat-label>
+                                  <input type="text" matInput value="--" >
+                                  <button matSuffix mat-raised-button color="primary">Verify</button>
+                                  
+                                </mat-form-field>
+                              </form>
+                              
+                        </mat-card-content>
+                    </mat-card>                  
+                </div>
+
+                <div class="d-flex mx-2 flex-column mt-2 ">
+                    <mat-card>
+                        <mat-card-content style="padding: 6px 10px !important ;">
+                            <form class="example-form">
+                                <mat-form-field class="w-100" appearance="fill" >
+                                  <mat-label>Address Proof</mat-label>
+                                  <input type="text" matInput  value="--">
+                                  <button matSuffix mat-raised-button color="primary">Verify</button>
+                                  
+                                </mat-form-field>
+                              </form>
+                              
+                        </mat-card-content>
+                    </mat-card>                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

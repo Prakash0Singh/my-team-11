@@ -1,0 +1,28 @@
+<div class="container bg-light" style="margin-bottom: 50px;">
+    <div class="row" style="padding: 15px;">
+        <div class="col-12 d-flex justify-content-between">
+            <span class=" fs-5">CONFIRMATION</span>
+            <button type="button"  (click)="closeMat_Sheet()" class="btn fs-5"><i class="bi bi-x-circle-fill"></i></button> 
+        </div>
+        <div class="col-12 d-flex justify-content-between text-muted">
+            <span>Available Balance</span>
+            <span>{{balance?.usablebalance|currency:"INR":"symbol"}}</span>
+        </div>
+        <div class="col-12 d-flex justify-content-between">
+            <span>Bonus Amount </span>
+            <span>{{balance?.bonus|currency:"INR":"symbol"}}</span>
+        </div>
+        <div class="col-12 d-flex justify-content-between">
+            <span>Walllet Amount</span>
+            <span>{{balance?.entryfee-balance?.bonus|currency:"INR":"symbol"}}</span>
+        </div>
+        <hr class="m-0 " style="height: 2px;">
+        <div class="col-12 d-flex justify-content-between ">
+            <span>Joining Amount</span>
+            <span>{{ balance?.entryfee|currency:"INR":"symbol"}}</span>
+        </div>
+        <div class="col-12 pt-1 d-flex justify-content-center">    
+            <button mat-raised-button color="primary" class="p-3" (click)="joincontest()">Join Contest</button>
+        </div>
+    </div>
+</div>

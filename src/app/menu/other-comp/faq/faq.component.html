@@ -1,0 +1,30 @@
+<div style="min-height: 438px; margin-top: 84px; margin-bottom: 90px;">
+    <div class="container p-0 m-0">
+        <div class="row p-0 m-0">
+            <div class="col-12 pt-2">
+                <div class="d-flex card-box bg-white flex-column ">
+                    <h4 class="px-3 pt-4  text-center">Hello, how can we help?</h4>
+                    <form class="searchBox">
+                        <div class="d-flex px-4 my-4">
+                            <div class="d-flex w-100 px-2">
+                                <input type="search" class="form-control" placeholder="Ask a question..." id="faqSearch" >
+                            </div>
+                            <button type="reset" mat-flat-button color="primary" >Clear</button>
+                        </div>
+                    </form>
+                    <div class="row m-0 p-0">
+                        <div class="col-6 p-0 p-4" *ngFor="let item of my_card_list">
+                            <div class="card showingpointer" style="height:120px;">
+                                <span class="position-absolute top-0 start-50 translate-middle">
+                                    <img src={{item.icon}} alt="" height="35" width="auto">
+                                </span>
+                                <p class="fw-bold text-center m-0 mt-4">{{item.title}}</p>
+                                <p class="text-center">{{item.content}}</p>
+                               </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

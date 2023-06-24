@@ -1,0 +1,150 @@
+@import 'ngx-toastr/toastr';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+.switchTabClass:hover{
+    cursor: pointer;
+}
+.mat-mdc-form-field-subscript-wrapper{
+    display: none;
+}
+::-webkit-scrollbar {
+    width: 0; 
+    background: transparent;  
+}
+.makeConatinerResponsive{
+    height: 80vh !important;
+    overflow-y: scroll !important;
+}
+.makeResponsive{
+    overflow-y: scroll !important;
+
+}
+.cardContainer{
+    max-height: 90vh;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.innerDIV{
+    /* background-color: white; */
+    /* border: 1px solid red; */
+    max-height: 90vh;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+}
+.childiv{
+    height: 100%;
+}
+.topNavbar{
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    top: 0px;
+    /* border: 3px solid #8AC007; */
+}
+.bottomFotter{
+    z-index: 11;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    /* border: 3px solid #8AC007; */
+}
+.SubComponents{
+    margin-top: 71px;
+    margin-bottom: 90px;
+} 
+.forStyle{
+    box-shadow: 5px 5px 15px 5px #17171782;
+}
+.showingpointer{
+    cursor: pointer;
+}
+
+.cdk-overlay-container{
+    position:absolute !important;
+    width: 100%;
+}
+.mat-bottom-sheet-container-large{
+    margin-bottom:34px ;
+}
+@media (min-width: 992px){
+.cdk-overlay-container{
+    position:absolute !important;
+    width: 66.66666667%;
+}
+}
+
+@media (min-width: 768px){
+    .cdk-overlay-container{
+        position:absolute !important;
+        width: 41.66666667%;
+}
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: white !important;
+}
+
+
+/* .mat-mdc-tab-body.mat-mdc-tab-body-active
+{
+    z-index: 0 !important;
+} */
+/* .mat-mdc-dialog-container .mdc-dialog__surface{
+    background-color: transparent !important;
+} */
+.mat-mdc-dialog-container .mdc-dialog__surface{
+    box-shadow: none !important;
+}
+
+.mat-bottom-sheet-container-medium {
+    background:transparent !important;
+}
+/* .cdk-overlay-backdrop.cdk-overlay-backdrop-showing{
+    opacity: 0 !important;
+} */
+
+.team-one{
+    padding: 0 3px;
+   background: rgba(255, 255, 255, 0.2);
+   
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(5px);
+   -webkit-backdrop-filter: blur(5px);
+   border: 1px solid rgba(255, 255, 255, 0.3);
+     }
+   
+     .team-two{
+       padding: 0 3px;
+   background: rgba(0, 0, 0, 0.48);
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(5px);
+   -webkit-backdrop-filter: blur(5px);
+   border: 1px solid rgba(0, 0, 0, 0.3);
+     }
+
+ /* offcanvas (Profile) Backdrop settings  */
+ .offcanvas-backdrop {
+    position: fixed;
+    top: 24px !important;
+    left: 11px !important;
+    z-index: 1040 !important;
+    width: 41vw !important;
+    height: 90vh !important;
+    background-color: #000;
+}
+
+/* global hover effect */
+.global-hover-effect:hover{
+    background-color: rgb(218 218 218 / 62%) !important;
+}
+
+
+.btn:first-child:active{
+    border: none !important;
+}

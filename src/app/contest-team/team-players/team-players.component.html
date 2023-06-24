@@ -1,0 +1,217 @@
+<div class="row m-0 p-0">
+<div class="col-lg-5 p-0 col-md-8 col-12 sm-mx-auto rounded bg-light position-relative cardContainer">
+    <div class="innerDIV">
+        <div class="childiv">
+<div class="col-12 p-0 m-0" style="min-height: 660px;">
+    <div class="col-12 rounded bg-white p-0 mx-0">
+<div class="row p-0 m-0  topNavbar bg-light">
+<!-- NavBar Code -->
+<div class="row p-0 m-0">
+    <div class="col-12 bg-dark p-0 rounded-top">
+        <div class="d-flex justify-content-between align-items-center mt-3 mb-2">
+            <div class="">
+                <button mat-button (click)="goingback()" class="showingpointer" >
+                <mat-icon class="text-light fw-bold ">keyboard_backspace</mat-icon>
+                </button>
+                <p class="text-light fw-bold m-0 fs-5  d-inline-block">{{team_Card.team1name?team_Card.team1name:team_Card.team1display}} vs {{team_Card.team2name?team_Card.team2name:team_Card.team2display}}</p>
+            </div>
+            <div class="d-flex">
+                <div class="px-2">
+                    <mat-icon class="text-light showingpointer" (click)="route.navigate(['menu/wallet'])">account_balance_wallet</mat-icon>
+                </div>
+                <div class="px-2">
+                    <mat-icon class="text-light showingpointer"(click)="route.navigate(['menu/home'])" >home</mat-icon>
+                </div>
+                <div class="px-2">
+                    <mat-icon class="text-light showingpointer">help</mat-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Team Card -->
+<div class="row p-0 m-0">
+    <div class="col-12 p-0">
+        <div class="">
+                <div class="rounded pt-2 px-3 mb-3">
+                  <div class=" d-flex justify-content-between align-items-center">
+                    <div class="d-flex flex-column align-items-center">
+                        <img src={{team_Card.team1logo}} height="50" width="auto" alt="">
+                        <p class="m-0">{{team_Card.team1name}}</p>
+                    </div>
+                    <span class="creditText">{{team.team1}}</span>
+                    <div class="d-flex flex-column align-items-center">
+                        <span class="allowText">Player</span>
+                        <span class="creditText">{{team.cur_players}}/11</span>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <span class="allowText">Credit Left</span>
+                        <span class="creditText">{{totalPoints}}</span>
+                    </div>
+                    <span class="creditText">{{team.team2}}</span>
+                    <div class="d-flex flex-column align-items-center">
+                        <img src={{team_Card.team2logo}} height="50" width="auto" alt="">
+                        <p class="m-0">{{team_Card.team2name}}</p>
+                    </div>
+                </div>
+                </div>
+                <div class="mt-2 mb-1 mx-2">
+                <mat-progress-bar mode="determinate" value="{{(team.cur_players/11)*100}}"></mat-progress-bar>
+            </div>
+                <div class=" d-flex justify-content-between mx-2">
+                    <sub class="d-inline-block pt-2">Maximum 7 Allowed from Same Team</sub>
+                    <sub><button class="btn" (click)="resetmyteam()">Reset</button></sub>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+<div class="row p-0" style="margin-top: 210px;">
+          <div class="col-12 p-0 m-0">
+            <ul class="nav nav-tabs d-flex justify-content-around">
+                <li class="nav-item">
+                    <input type="radio" name="players" id="keeper" value="allKeepers" checked  (change)="showpAllPlayersList($event.target)">
+                    <label for='keeper'>
+                        <a class="nav-link">WK({{team.keeper.currMem}})</a>
+                    </label>
+                </li>
+                <li class="nav-item">
+                    <input type="radio" name="players" id="batsman" value="allBatsman"   (change)="showpAllPlayersList($event.target)">
+                    <label for='batsman'>
+                        <a class="nav-link">BAT({{team.batsman.currMem}})</a>
+                  </label>
+                </li>
+                <li class="nav-item">
+                    <input type="radio" name="players" id="allrounder" value="allAllRounder"  (change)="showpAllPlayersList($event.target)">
+                    <label for='allrounder'>
+                        <a class="nav-link">AR({{team.allrounder.currMem}})</a>
+                  </label>
+                </li>
+                <li class="nav-item">
+                    <input type="radio" name="players" id="bowlers" value="allBowler"  (change)="showpAllPlayersList($event.target)">
+                    <label for='bowlers'>
+                        <a class="nav-link ">BOWL({{team.bowler.currMem}})</a>
+                  </label>
+                </li>
+              </ul>
+          </div>
+</div>
+<div class="row p-0 m-0 ">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">TEAM</th>
+            <th scope="col">PLAYERS</th>
+            <th scope="col">S.BY</th>
+            <th scope="col">PTS</th>
+            <th scope="col">CR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of getData " (click)="creatingUserTeam(i)" [ngClass]="{ 'bg-secondary':i.isSelected }"  [ngStyle]="{'opacity':
+          ((i.team=='team2'&& team.team2==7  ) ||     (i.team=='team1'&& team.team1==7)
+            ||(team.cur_players==11)    ||  (team[i.role].currMem==team[i.role].max)
+            ||((team.cur_players==7)&&(team.batsman.currMem==0 && team.bowler.currMem==0) && (i.role=='keeper'|| i.role=='allrounder'))
+            ||(checkMinimum)
+          ) 
+          && !i.isSelected ? '0.5' : '1' }"  >
+            <td><div class="position-relative">
+                    <img src={{i.image}} alt="..." height="50" width="auto">
+                    <span class="position-absolute bottom-0 start-0 px-1" style="
+                    font-size: 10px;
+                    background: rgb(0 0 0 / 74%);
+                    /* border-radius: 16px; */
+                    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+                    backdrop-filter: blur(-24px);
+                    color: white;">
+                        {{i.teamname}}
+                      </span>
+                </div>
+            </td>
+            <td>{{i.name}}
+                <br><span *ngIf="i.playingstatus==-1" class="" style="font-size: 10px; color: rgb(255, 145, 0);">● In Last Playing</span>
+                <span *ngIf="i.playingstatus==1" class="" style="font-size: 10px; color: rgb(43, 46, 228);">● In Available</span></td>
+                <td>{{i.player_selection_percentage}}%</td>
+            <td>{{i.points}}</td>
+            <td>{{i.credit}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+    </div>
+</div>
+</div>
+</div>
+<div class="bottomFotter d-flex justify-content-center ">
+    <button mat-raised-button  [ngStyle]="{'background-color':team.totalplayers.length==11? '#3f51b5' : '#c6c9cc' }" class="p-4 mb-2" (click)="saveMyTeam()">Next</button>
+</div>
+</div>
+<div class="col-lg-5 p-0 col-md-8 col-12 mx-auto  sm-mx-auto rounded bg-primary position-relative cardContainer" style="overflow-y: hidden;" *ngIf="this.team.totalplayers.length" >
+    <div class="bg-light" style="background-image: url(https://myteam11main.s3.ap-south-1.amazonaws.com/images/static/cricket_live_fantasy_bg.png); min-height: 100vh; background-size: 100% 100%;">
+       <div class="row p-0 m-0 pt-2">
+        <div class="col-12 p-0 m-0">
+            <p class="text-center m-0 text-uppercase fw-bold text-light ">Keeper</p>
+        </div>
+        <div class="col-12 p-0 m-0 d-flex justify-content-around align-items-center" style="height: 150px;">
+            <div class="d-flex flex-column align-items-center" *ngFor="let i of team.keeper.players">
+                <img src={{i.image}} alt="player" height="auto" width="50">
+                <p class="m-0 d-inline-block fw-bold text-wrap text-center" ngClass="{{i.team=='team1'?'text-light team-two':'text-dark team-one'}}">{{i.name}}</p>
+                <p class="m-0 d-inline-block fw-bold text-wrap text-center">
+                    {{ i.credit}} cr
+                </p>
+                <span class="text-muted">({{i.teamname}})</span>
+            </div>
+        </div>
+       </div>
+       <div class="row p-0 m-0 " >
+        <div class="col-12 p-0 m-0">
+            <p class="text-center m-0 text-uppercase fw-bold text-light ">Batsman</p>
+        </div>
+        <div class="col-12 p-0 m-0 d-flex justify-content-around align-items-center" style="height: 150px;">
+            <div class="d-flex flex-column align-items-center" *ngFor="let i of team.batsman.players">
+                <img src={{i.image}} alt="player" height="auto" width="50">
+                <p class="m-0 d-inline-block fw-bold text-wrap text-center" ngClass="{{i.team=='team1'?'text-light team-two':'text-dark team-one'}}">{{i.name}}</p>
+                <p class="m-0 d-inline-block fw-bold text-wrap text-center">
+                    {{ i.credit}} cr
+                </p>
+                <span class="text-muted">({{i.teamname}})</span>
+
+            </div>
+        </div>
+       </div>
+       <div class="row p-0 m-0">
+        <div class="col-12 p-0 m-0">
+            <p class="text-center m-0 text-uppercase fw-bold text-light">All-Rounder</p>
+        </div>
+        <div class="col-12 p-0 m-0 d-flex justify-content-around align-items-center " style="height: 120px;">
+            <div class="d-flex flex-column align-items-center" *ngFor="let i of team.allrounder.players">
+                <img src={{i.image}} alt="player" height="auto" width="50">
+                <p class="m-0 d-inline-block fw-bold text-wrap text-center" ngClass="{{i.team=='team1'?'text-light team-two':'text-dark team-one'}}">{{i.name}}</p>
+                <p class="m-0 d-inline-block fw-bold text-wrap text-center">
+                    {{ i.credit}} cr
+                </p>
+                <span class="text-muted">({{i.teamname}})</span>
+
+            </div>
+        </div>
+       </div>
+       <div class="row p-0 m-0">
+        <div class="col-12 p-0 m-0">
+            <p class="text-center m-0 text-uppercase fw-bold text-light">Bowlers</p>
+        </div>
+        <div class="col-12 p-0 m-0 d-flex justify-content-around align-items-center" style="height: 120px;">
+            <div class="d-flex flex-column align-items-center" *ngFor="let i of team.bowler.players">
+                <img src={{i.image}} alt="player" height="auto" width="50">
+                <p class="m-0 d-inline-block fw-bold text-wrap text-center" ngClass="{{i.team=='team1'?'text-light team-two':'text-dark team-one'}}">{{i.name}}</p>
+                <p class="m-0 d-inline-block fw-bold text-wrap text-center">
+                    {{ i.credit}} cr
+                </p>
+                <span class="text-muted">({{i.teamname}})</span>
+
+            </div>
+        </div>
+       </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,88 @@
+<div class="row p-0">
+    <div class="col-lg-5 p-0 col-md-8 col-12 sm-mx-auto rounded bg-light position-relative cardContainer">
+<div class="innerDIV">
+<div class="childdiv">
+<div class="col-12 p-0 m-0" style="min-height: 611px;">
+<div class="col-12 rounded bg-white p-0 mx-0">
+<!-- NavBar Code -->
+      <div class="row p-0 m-0 topNavbar bg-light">
+              <div class="col-12 bg-dark p-0 rounded-top">
+                  <div class="d-flex justify-content-between align-items-center mt-3 mb-2">
+                      <div class="">
+                          <button mat-button (click)="route.navigate(['contest-team/tournaments',matchKey])">
+                          <mat-icon class="text-light fw-bold showingpointer">keyboard_backspace</mat-icon>
+                          </button>
+                          <p class="text-light fw-bold m-0 fs-5  d-inline-block">{{matchTitle.team1name?matchTitle.team1name:matchTitle.team1display}} vs {{matchTitle.team2name?matchTitle.team2name:matchTitle.team2display}}</p>
+                      </div>
+                      <div class="d-flex">
+                          <div class="px-2" >
+                              <mat-icon class="text-light showingpointer" (click)="route.navigate(['menu/wallet'])">account_balance_wallet</mat-icon>
+                          </div>
+                          <div class="px-2">
+                              <mat-icon class="text-light showingpointer" (click)="route.navigate(['menu/home'])">home</mat-icon>
+                          </div>
+                          <div class="px-2">
+                              <mat-icon class="text-light showingpointer">help</mat-icon>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+      </div>
+<!-- Api Data List -->
+<div class="row pt-3 px-3 " style="margin-top: 50px;">
+
+        <!-- Joinned Contest -->
+            <div class="card p-0 mt-1 mb-4 border border-1" >
+                <div class="d-flex justify-content-between pb-2">
+                    <div class="d-flex">
+                        <p class="fs-5 fw-bold m-0 ps-2 pt-2">{{currentData?.win_amount?'₹'+currentData?.win_amount:'Skills Test'}}</p>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between pb-2">
+                    <p class="text-start d-inline-block ps-2 m-0">{{currentData?.maximum_user - currentData?.joinedusers }} Sports Left</p>
+                    <p class="text-end d-inline-block pe-2 text-muted m-0">{{currentData?.maximum_user}} Sports</p>
+                </div>
+                <div class="d-flex ">
+                    <mat-progress-bar mode="determinate"  value ="{{(currentData?.joinedusers/currentData?.maximum_user)*100}}"></mat-progress-bar>
+                </div>
+                <div class="d-flex justify-content-between border border-top-2" style="background-color:#c4d2e8;">
+                    <div class="d-flex">
+                    </div>
+                </div>
+            </div>
+        <!-- Joinned Contest -->
+
+        <!-- Leaderboard -->       
+            <div class=" p-0 border border-1" *ngFor="let i of contestsList|sortUsers|customPipe" >
+                <div class="py-2 p-0 m-0"  [ngStyle]="{'background-color': i.userno==-1? '#ecf5ff' : 'white' }">
+                    <div class="d-flex align-items-center justify-content-between ">
+                        <div class="d-flex align-items-center w-100 justify-content-between " >
+                            <div class="d-flex position-relative">
+                                <img src="{{i.image}}" alt="userprofiel" height="50" width="50">
+                                <span class="ms-3 pt-2 text-uppercase fw-bold  "> #{{i.rank}}</span>
+                            </div>
+                            <span class=" text-uppercase">{{i.team}}</span>
+                            <p class=" m-0  pe-2  text-uppercase fw-bold float-end"> {{i.points}}</p>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                </div>
+
+        <!-- Leaderboard -->
+    </div>
+</div>
+</div>
+
+<div class="position-absolute bottom-0 start-50 translate-middle-x pb-3 w-100 d-flex justify-content-around"
+style="z-index: 1;">
+<button mat-raised-button color='warn' class="text-center p-2" (click)="showTeam(currentData)" >  {{currentData?.entryfee|currency:'INR':'symbol':'1.0' }} Join Now</button>
+</div>
+
+</div>
+</div>
+
+</div>
+
+</div>

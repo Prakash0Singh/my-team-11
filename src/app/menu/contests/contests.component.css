@@ -1,0 +1,40 @@
+#typesSports li .active {
+    /* background-color: red; */
+    border-bottom: 3px solid blue;
+
+}
+
+#footerMenu li .active {
+    /* background-color: red; */
+    border-bottom: 3px solid blue;
+
+}
+
+input[type="radio"] {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
+
+label {
+    cursor: pointer;
+}
+
+input[type="radio"]:checked+label {
+    /* background-color: #58ba83; */
+    border-bottom: 3px solid blue;
+}
+
+.blink {
+    width: 8px;
+    height: 8px;
+    background-color: red;
+    border-radius: 100px;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes blink {
+    50% {opacity: 0;}
+  }

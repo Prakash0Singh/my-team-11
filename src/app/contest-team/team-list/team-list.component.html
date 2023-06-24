@@ -1,0 +1,188 @@
+<div class="row p-0" style="min-height: 660px">
+    <div class="col-lg-5 p-0 col-md-8 col-12  rounded bg-white position-relative">
+        <!-- NavBar Code -->
+        <div class="row p-0 m-0">
+            <div class="col-12 bg-dark p-0 rounded-top">
+                <div class="d-flex justify-content-between align-items-center mt-3 mb-2">
+                    <div class="">
+                        <button mat-button (click)="goingBack()">
+                            <mat-icon class="text-light fw-bold showingpointer">keyboard_backspace</mat-icon>
+                        </button>
+                        <!-- <img src="https://www.myteam11.com/fantasy-sports/assets/images/head-logo.png" alt="myteam11-logo" height="30px"> -->
+                        <p class="text-light fw-bold m-0 fs-5 d-inline-block">
+                            {{ matchTitle.team1name?matchTitle.team1name:matchTitle.team1display}} vs {{ matchTitle.team2name?matchTitle.team2name:matchTitle.team2display }}
+                        </p>
+                    </div>
+                    <div class="d-flex">
+                        <div class="px-2">
+                            <mat-icon class="text-light showingpointer"(click)="route.navigate(['menu/wallet'])" >account_balance_wallet</mat-icon>
+                        </div>
+                        <div class="px-2">
+                            <mat-icon class="text-light showingpointer" (click)="route.navigate(['menu/home'])">home</mat-icon>
+                        </div>
+                        <div class="px-2">
+                            <mat-icon class="text-light">help</mat-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12" *ngIf="joinedTeam">
+                <small class="pt-2">You can join upto 1 teams in this contest.</small>
+            </div>
+        </div>
+        <!-- Api Data List -->
+        <div class="row w-100 m-0 pt-3 px-0 position-relative" style="overflow-y: scroll; max-height: 620px">
+        <div class="px-3">
+            <div class="card p-0 mt-3 mb-3 border border-1" *ngFor="let i of myTeamsMatchList; let index = index"  [ngStyle]="{'opacity':i.isdisable?'0.5':'1'}" >
+
+                <div class="d-flex justify-content-between align-items-center border border-1">
+                    <p class="text-muted d-inline-block m-0 ps-3 fw-bold" style="font-size: 12px">
+                    
+                        <input type="{{multiEntry ? 'checkbox' : 'radio'}}"  name="myteams" class="me-2" style="height: 12px" *ngIf="joinedTeam" [disabled]="i.isdisable?true:false"
+                        (click)="addteam($event.target, i)" />
+                        <span> TEAM - {{ i.teamnumber }}</span>
+                        
+                    </p>
+                    <div class="d-flex align-items-center py-2">
+                        <mat-icon class="fs-5 mx-2 showingpointer" matTooltip="view" (click)="viewTeam(i)">visibility</mat-icon>
+                        <mat-icon class="fs-5 mx-2 showingpointer" matTooltip="edit" (click)="editteam(i)">edit</mat-icon>
+                        <mat-icon class="fs-5 mx-2 showingpointer" matTooltip="clone"
+                            (click)="cloneteam(i.teamid)">content_copy</mat-icon>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between pb-2 pt-4">
+                    <div class="d-flex ps-2">
+                        <ng-container *ngFor="let d of i.player">
+                            <div class="position-relative" *ngIf="d.captain == 1">
+                                <img matTooltip="{{ d.name }}" src="{{ d.image }}" alt="captain" height="70" width="70"
+                                    class="mx-2" style="border-radius: 25px" />
+                                <span
+                                    class="position-absolute top-0 start-100 translate-middle badge text-light bg-dark p-1">C</span>
+                                <p class="position-absolute bottom-0 w-100 m-0 text-center nameTag text-wrap">
+                                    {{ d.name }}
+                                </p>
+                            </div>
+                            <div class="position-relative ps-1" *ngIf="d.vicecaptain == 1">
+                                <img matTooltip="{{ d.name }}" src="{{ d.image }}" alt="captain" height="70" width="70"
+                                    class="mx-2" style="border-radius: 25px" />
+                                <span
+                                    class="position-absolute top-0 start-100 translate-middle badge text-light bg-dark p-1">VC</span>
+                                <p class="position-absolute bottom-0 w-100 m-0 text-center nameTag text-wrap">
+                                    {{ d.name }}
+                                </p>
+                            </div>
+                        </ng-container>
+                    </div>
+                    <ng-container *ngFor="let d of currentPlayer; let din = index">
+                        <div class="d-flex flex-column pe-4" *ngIf="index == din">
+                            <p class="m-0">
+                                {{ matchTitle.team1fullname }} - {{ d.team1.length }}
+                            </p>
+                            <p class="m-0">
+                                {{ matchTitle.team2fullname }} - {{ d.team2.length }}
+                            </p>
+                        </div>
+                    </ng-container>
+                </div>
+                <ng-container *ngFor="let d of currentPlayer; let din = index">
+                    <div class="d-flex justify-content-around pb-2" *ngIf="index == din">
+                        <p class="d-inline-block ps-2 m-0">WK -{{ d.k.length }}</p>
+                        <p class="d-inline-block pe-2 m-0">BAT - {{ d.bat.length }}</p>
+                        <p class="d-inline-block pe-2 m-0">AR - {{ d.al.length }}</p>
+                        <p class="d-inline-block pe-2 m-0">BOW - {{ d.bow.length }}</p>
+                    </div>
+                </ng-container>
+                
+            </div>
+        </div>
+<!--Off canvas-->
+        <div [ngClass]="offcanvasdiv?'d-none':'d-block'"  class="offcanvas offcanvas-bottom position-sticky p-0" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" data-bs-backdrop="false">
+            <div class="offcanvas-header pb-0 bg-light border border-1 pb-1">
+                <p class="offcanvas-title" id="offcanvasExampleLabel">CONFIRMATION</p>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" (click)="offcanvasdiv=!offcanvasdiv"></button>
+              </div>
+        <div class="offcanvas-body pt-1">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-between text-muted">
+                        <span>Available Balance</span>
+                        <span>{{balance?.usablebalance|currency:"INR":"symbol"}}</span>
+                    </div>
+                    <div class="col-12 d-flex justify-content-between">
+                        <span>Amount Per Team</span>
+                        <span>{{userjoinedteams.length }} * {{balance?.entryfee/userjoinedteams.length|currency:"INR":"symbol"}}</span>
+                    </div>
+                    <div class="col-12 d-flex justify-content-between">
+                        <span>Bonus Amount </span>
+                        <span>{{balance?.bonus|currency:"INR":"symbol"}}</span>
+                    </div>
+                    <div class="col-12 d-flex justify-content-between">
+                        <span>Walllet Amount</span>
+                        <span>{{balance?.entryfee-balance?.bonus|currency:"INR":"symbol"}}</span>
+                    </div>
+                    <hr class="m-0 " style="height: 2px;">
+                    <div class="col-12 d-flex justify-content-between ">
+                        <span>Joining Amount</span>
+                        <span>{{ balance?.entryfee|currency:"INR":"symbol"}}</span>
+                    </div>
+                    <div class="col-12 pt-1 d-flex justify-content-center">    
+                        <button mat-raised-button color="primary" class="p-3" (click)="joincontest()">Join Contest</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+          <!--  -->
+        </div>
+
+        <div class="position-absolute bottom-0 start-50 translate-middle-x pb-3 w-100 d-flex justify-content-around"
+            style="z-index: 67">
+            <button mat-raised-button color="primary" class="text-center p-3" (click)="createteam()" *ngIf="!swapJoinid">
+                Create New Team
+            </button>
+
+                <button #canvasbtn class="btn btn-primary d-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                    Button with data-bs-target
+                </button>
+                <button *ngIf="joinedTeam && !swapJoinid " mat-raised-button color="primary" class="text-center p-3"  (click)="getbalance()">Join Contest
+                    </button>
+
+                <button *ngIf="swapJoinid"  mat-raised-button color="primary" class="text-center p-3"  (click)="switchteams()">Switch Team</button>
+        </div>
+    </div>
+    <div class="col-6 mx-auto p-0 sm-mx-auto rounded bg-primary position-relative cardContainer"
+        style="overflow-y: hidden" *ngIf="view">
+        <div class="bg-light" style="
+        background-image: url(https://myteam11main.s3.ap-south-1.amazonaws.com/images/static/cricket_live_fantasy_bg.png);
+        min-height: 100vh;
+        background-size: 100% 100%;
+      ">
+                 <div class="row p-0 m-0 pt-2" *ngFor="let show of my_team">
+                    <div class="col-12 p-0 m-0">
+                        <p class="text-center m-0 text-uppercase fw-bold text-light">{{show.title}}</p>
+                    </div>
+                    <div class="col-12 p-0 m-0 d-flex justify-content-around align-items-center" style="height: 130px;">
+                        <ng-container *ngFor="let i of show.list">
+                            <div class="d-flex flex-column align-items-center">
+                                <div class="position-relative">
+                                    <img src="{{ i.image }}" class="rounded-pill" alt="player" height="auto" width="50"  />
+                                    <span *ngIf="i.vicecaptain"
+                                        class="position-absolute top-0 start-100 translate-middle badge rounded viceCap fs-6">VC</span>
+                                    <span *ngIf="i.captain"
+                                        class="position-absolute top-0 start-0 translate-middle badge rounded cap text-dark fs-6">C</span>
+                                </div>
+                                <p class="m-0 d-inline-block fw-bold text-wrap text-center" ngClass="{{i.team=='team1'?'text-light team-two':'text-dark team-one'}}">
+                                    {{ i.name }}
+                                </p>
+                                <p class="m-0 d-inline-block fw-bold text-wrap text-center">
+                                    {{ i.credit}} cr
+                                </p>
+                            </div>
+                    </ng-container>
+                    </div>
+                   </div>
+
+        </div>
+    </div>
+</div>

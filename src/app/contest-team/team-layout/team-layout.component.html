@@ -1,0 +1,35 @@
+<div class="container">
+<div class="row p-0 mx-0 bg-light" style="margin-top: 150px;">
+    <table class="table mt-5 pt-4">
+  <thead>
+    <tr>
+      <th scope="col">TEAM</th>
+      <th scope="col">PLAYERS</th>
+      <th scope="col">S.BY</th>
+      <th scope="col">%C BY</th>
+      <th scope="col">%VC BY</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of myTeam"  >
+      <td><div>
+              <img src={{i.image}} alt="..." height="50" width="auto">
+          </div>
+      </td>
+      <td>{{i.name}}
+          <br><span class="text-muted text-uppercase" style="font-size: 10px;">{{i.role}} ({{i.teamname}})</span>
+      </td>
+      <td>{{i.player_selection_percentage}}%</td>
+      <td>
+          <input type="radio" name="c" [checked]="i.captain"  >
+      </td>
+      <td>
+        
+          <input type="radio" name="vc"  [checked]="i.vicecaptain" >
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>

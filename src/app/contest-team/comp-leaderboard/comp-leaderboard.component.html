@@ -1,0 +1,182 @@
+<div class="row p-0">
+    <div class="col-lg-5 p-0 col-md-8 col-12 sm-mx-auto rounded bg-light position-relative cardContainer">
+<div class="innerDIV">
+<div class="childdiv">
+<div class="col-12 p-0 m-0" style="min-height: 611px;">
+<div class="col-12 rounded bg-white p-0 mx-0">
+<!-- NavBar Code -->
+      <div class="row p-0 m-0 topNavbar bg-light">
+              <div class="col-12 bg-dark p-0 rounded-top">
+                  <div class="d-flex justify-content-between align-items-center mt-3 mb-2">
+                      <div class="">
+                          <button mat-button (click)="route.navigate(['menu/contests'])">
+                          <mat-icon class="text-light fw-bold showingpointer">keyboard_backspace</mat-icon>
+                          </button>
+                          <p class="text-light fw-bold m-0 fs-5  d-inline-block">{{matchTitle.team1name?matchTitle.team1name:matchTitle.team1display}} vs {{matchTitle.team2name?matchTitle.team2name:matchTitle.team2display}}</p>
+                      </div>
+                      <div class="d-flex">
+                          <div class="px-2" >
+                              <mat-icon class="text-light showingpointer" (click)="route.navigate(['menu/wallet'])">account_balance_wallet</mat-icon>
+                          </div>
+                          <div class="px-2">
+                              <mat-icon class="text-light showingpointer" (click)="route.navigate(['menu/home'])">home</mat-icon>
+                          </div>
+                          <div class="px-2">
+                              <mat-icon class="text-light showingpointer">help</mat-icon>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+      </div>
+<!-- Api Data List -->
+<div class="row pt-3 px-3 " style="margin-top: 50px;">
+    <div class="live-sore-card py-3">
+    <div class="d-flex px-3 justify-content-between ">
+        <div class="d-flex flex-column" >
+            <p class="m-0"> Team : <span class="fw-bold"> {{match_data?.Team1}} </span></p>
+            
+            <p class="m-0">Total-Overs : <span class="fw-bold"> {{match_data?.Team1_Totalovers1}}</span> </p>
+            <p class="m-0">Total-Runs :<span class="fw-bold"> {{match_data?.Team1_Totalruns1}}</span> </p>
+            <p class="m-0">Total-Wickets :<span class="fw-bold"> {{match_data?.Team1_Totalwickets1}}</span> </p>
+        </div>
+        <div class="d-flex flex-column">
+            <p class="m-0"> Team : <span class="fw-bold"> {{match_data?.Team2}} </span></p>
+
+            <p class="m-0">Total-Overs : <span class="fw-bold"> {{match_data?.Team2_Totalovers1}}</span> </p>
+            <p class="m-0">Total-Runs :<span class="fw-bold"> {{match_data?.Team2_Totalruns1}}</span> </p>
+            <p class="m-0">Total-Wickets :<span class="fw-bold"> {{match_data?.Team2_Totalwickets1}}</span> </p>
+        </div>
+    </div>
+    <!-- <div class="d-flex"> -->
+        <p class="text-center m-0"> {{match_data?.Winning_Status}}</p>
+        <p class="text-center m-0" *ngIf="!(match_data?.Winning_Status)"><span class="fw-bold border border-3  px-2"> <span class="d-inline-block blink"></span> Live </span>  </p>
+    <!-- </div> -->
+    </div>
+    <mat-tab-group>
+        <mat-tab label="Leaderboard">
+        <!-- Leaderboard -->       
+            <div class=" p-0 border border-1" *ngFor="let i of contestsList|sortUsers|customPipe" >
+                <div class="py-2 p-0 m-0"  [ngStyle]="{'background-color': i.userno==-1? '#ecf5ff' : 'white' ,'cursor':'pointer'}" [ngClass]="'hovereffect'" (click)="showTeam(i.teamid)">
+                    <div class="d-flex align-items-center justify-content-between ">
+                        <div class="d-flex align-items-center w-100 justify-content-between " >
+                            <div class="d-flex">
+                                <img src="{{i.image}}" alt="userprofiel" height="50" width="50">
+                                <span class="ms-1 py-auto text-uppercase fw-bold">#{{i.rank}}</span>
+                            </div>
+                            <span class=" text-uppercase">{{i.team}}</span>
+                            <p class=" m-0 pe-2  text-uppercase fw-bold float-end"> {{i.points}}
+                                <img *ngIf="i.rank==1 && match_data?.Winning_Status" src="https://img.freepik.com/free-vector/golden-medal-design_1166-34.jpg?size=626&ext=jpg&ga=GA1.2.1115569210.1682318539&semt=ais" alt="first place" height="40" width="40">
+                                <img *ngIf="i.rank==2  && match_data?.Winning_Status" src="https://img.freepik.com/free-vector/silvery-medal-design_1166-23.jpg?size=626&ext=jpg&ga=GA1.1.1115569210.1682318539&semt=ais" alt="second place" height="40" width="40">
+                                <img *ngIf="i.rank==3 && match_data?.Winning_Status" src="https://img.freepik.com/free-vector/bronzed-medal-design_1166-32.jpg?size=626&ext=jpg&ga=GA1.2.1115569210.1682318539&semt=ais" alt="third place" height="40" width="40">
+                            </p>                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                </div>
+
+        <!-- Leaderboard -->
+        </mat-tab>
+        <mat-tab label="Joinned Contest">
+                <!-- Joinned Contest -->
+            <div class="card p-0 mt-1 mb-4 border border-1" >
+                <div class="d-flex justify-content-between pb-2">
+                    <div class="d-flex">
+                        <p class="fs-5 fw-bold m-0 ps-2 pt-2">{{currentData?.win_amount?'₹'+currentData?.win_amount:'Skills Test'}}</p>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between pb-2">
+                    <p class="text-start d-inline-block ps-2 m-0">{{currentData?.maximum_user - currentData?.joinedusers }} Sports Left</p>
+                    <p class="text-end d-inline-block pe-2 text-muted m-0">{{currentData?.maximum_user}} Sports</p>
+                </div>
+                <div class="d-flex ">
+                    <mat-progress-bar mode="determinate" value ="{{(currentData?.joinedusers/currentData?.maximum_user)*100}}"></mat-progress-bar>
+                </div>
+                <div class="d-flex justify-content-between border border-top-2" style="background-color:#c4d2e8;">
+                    <div class="d-flex">
+                    </div>
+                </div>
+            </div>
+                <!-- Joinned Contest -->
+        </mat-tab>
+      </mat-tab-group>
+    
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="col-6 mx-auto p-0 sm-mx-auto rounded bg-primary position-relative cardContainer"
+style="overflow-y: hidden" *ngIf="view">
+<div class="bg-light" style="
+background-image: url(https://myteam11main.s3.ap-south-1.amazonaws.com/images/static/cricket_live_fantasy_bg.png);
+min-height: 100vh;
+background-size: 100% 100%;
+">
+               <div class="row p-0 m-0 pt-2" *ngFor="let show of my_team">
+                <div class="col-12 p-0 m-0">
+                    <p class="text-center m-0 text-uppercase fw-bold text-light">{{show.title}}</p>
+                </div>
+                <div class="col-12 p-0 m-0 d-flex justify-content-around align-items-center" style="height: 130px;">
+                    <ng-container *ngFor="let i of show.list">
+                        <div class="d-flex flex-column align-items-center">
+                            <div class="position-relative mb-1" matTooltip="..." style="cursor: pointer;" (click)="user_info_modal(i.id)">
+                                <img src="{{ i.image }}" class="rounded-pill" alt="player" height="auto" width="50"  />
+                                <span *ngIf="i.vicecaptain"
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded viceCap fs-6 team-two">VC</span>
+                                <span *ngIf="i.captain"
+                                    class="position-absolute top-0 start-0 translate-middle badge rounded cap text-dark  team-one fs-6">C</span>
+                            </div>
+                            <p class="m-0 d-inline-block fw-bold text-wrap text-center" ngClass="{{i.team=='team1'?'text-light team-two ':'text-dark team-one'}}">
+                                {{ i.name }}
+                            </p>
+                            <p class="m-0 d-inline-block fw-bold text-wrap text-center">
+                                {{ i.points }} PTS
+                            </p>
+                           
+                        </div>
+                </ng-container>
+                </div>
+               </div>
+
+<!-- Modal -->
+<div class="modal fade position-absolute" id="exampleModal" tabindex="-1" data-bs-backdrop="false" aria-labelledby="exampleModalLabel" aria-hidden="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header px-3">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">{{player_info?.playername}}</h1>
+          <button type="button" class="btn btn-sm" data-bs-dismiss="modal" aria-label="Close"> <i class="bi bi-x-circle"></i></button>
+        </div>
+        <div class="modal-body " style="letter-spacing: 1px;">
+            <div class="d-flex justify-content-center" *ngIf="show_spinner_on_modal">
+                <mat-spinner></mat-spinner>
+            </div>
+          <div class="d-flex" *ngIf="!(show_spinner_on_modal)">
+            <div class="d-flex px-3 flex-column ">
+                <img src={{player_info?.playerimage}} alt="player-image" height="100" width="100">
+                <small class="m-0 pb-1"><span class="fw-bold"> D.O.B</span> - {{player_info?.playerdob}}</small>
+                <p class="m-0 pb-1"><span class="fw-bold"> ROLE</span> - {{player_info?.playerrole}}</p>
+            </div>
+            <div class="d-flex flex-column px-3">
+                <p class="m-0 pb-2"><span class="fw-bold"> Team</span> - {{player_info?.team}}</p>
+                <p class="m-0 pb-2"><span class="fw-bold"> COUNTRY</span> - {{player_info?.playercountry}}</p>
+                <p class="m-0 pb-2"><span class="fw-bold"> POINTS</span> - {{player_info?.playerpoints}}</p>
+                <p class="m-0 pb-2"><span class="fw-bold"> BOWLER STAT.</span> - {{player_info?.bowlerstat}}</p>
+                <p class="m-0 pb-2"><span class="fw-bold"> BATTING STAT.</span> - {{player_info?.battingstat}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+</div>
+<button #openModal type="button" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>

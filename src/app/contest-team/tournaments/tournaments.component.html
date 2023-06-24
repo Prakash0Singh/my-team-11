@@ -1,0 +1,102 @@
+<div class="row p-0" style="min-height: 660px">
+    <div class="col-lg-5 p-0 col-md-8 col-12  rounded bg-white position-relative "style="background-color:#d8e5f2">
+                        <!-- NavBar Code -->
+                        <div class="row p-0 m-0 topNavbar bg-light">
+                            <div class="col-12 bg-dark p-0 rounded-top">
+                                <div class="d-flex justify-content-between align-items-center mt-3 mb-2">
+                                    <div class="d-flex flex-wrap">
+                                        <button mat-button (click)="goingBack()">
+                                            <mat-icon class="text-light fw-bold ">keyboard_backspace</mat-icon>
+                                        </button>
+                                        
+                                        <p class="text-light fw-bold m-0 fs-5  d-inline-block  text-wrap">
+                                            {{matchTitle.team1name?matchTitle.team1name:matchTitle.team1display}} vs {{matchTitle.team2name?matchTitle.team2name:matchTitle.team2display}}</p>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="px-2">
+                                            <mat-icon (click)="route.navigate(['menu/wallet'])"  class="text-light showingpointer">account_balance_wallet</mat-icon>
+                                        </div>
+                                        <div class="px-2">
+                                            <mat-icon class="text-light showingpointer"
+                                                (click)="route.navigate(['menu/home'])">home</mat-icon>
+                                        </div>
+                                        <div class="px-2">
+                                            <mat-icon class="text-light">help</mat-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Api Data List -->
+                        <div class="row w-100 m-0 mt-5 px-2 position-relative" style="overflow-y: scroll; max-height: 620px;min-height: 600px">
+                           <div class="card p-0 mt-3 border border-1 showingpointer"  *ngFor="let i of mytournaments_list">
+                                <p class="m-0 py-2 text-center fw-bold " style="background-color: #c3dbff;font-family: 'math';">{{i.title}}</p>
+                                <div class="card p-0 mt-3 border border-1 showingpointer" *ngFor="let i of i. matches" (click)="gotoleaderboard(i.id)">
+                                <div class="d-flex justify-content-between pb-2 pt-2">
+                                    <p class="text-muted d-inline-block m-0  ps-1 fw-bold " style="font-size: 12px;">
+                                        {{i.name?i.name:"Skill's Test"}}</p>
+                                    <!-- <p class="text-muted d-inline-block m-0  fw-bold pe-2 " style="font-size: 12px;">
+                                        {{i.catname}}</p> -->
+                                </div>
+                                <div class="d-flex justify-content-between pb-2">
+                                    <div class="d-flex">
+                                        <p class="fs-5 fw-bold m-0 ps-2">{{i.win_amount?'₹'+i.win_amount:'Demo Match'}}</p>
+                                    </div>
+                                    <div class="d-flex flex-column pe-1">
+                                        <!-- <p class="text-muted m-0 pt-2 ps-1 float-end d-inline-block" style="font-size: 12px;">Entry</p> -->
+                                        <button mat-raised-button color="primary" (click)="showTeam(i,$event)">
+                                            {{i.entryfee?'₹'+i.entryfee:'Free'}}
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between pb-1">
+                                    <p class="text-start d-inline-block ps-2 m-0" style="font-size: 10px;">{{i.maximum_user - i.joinedusers }} Spots Left</p>
+                                    <p class="text-end d-inline-block pe-2 text-muted m-0" style="font-size: 10px;">{{i.maximum_user}} Spots</p>
+                                </div>
+                                <div class="d-flex pb-3">
+                                    <mat-progress-bar mode="determinate" color="accent"
+                                        value="{{(i.joinedusers/i.maximum_user)*100}}"></mat-progress-bar>
+                                </div>
+                                <div class="d-flex justify-content-between border border-top-2"
+                                    style="background-color:#c4d2e8;">
+                                    <div class="d-flex">
+                                        <p [matTooltip]="'1st Pize ₹'+ i.price_card[0].price" matTooltipPosition="above"
+                                            class="d-inline-block m-0 px-1" style="font-size: 10px;"><i
+                                                class="bi bi-award text-muted" style="font-size: 12px;"></i>
+                                            ₹{{i.price_card[0].price}}</p>
+                                        <p [matTooltip]="'Maximum '+ i.team_limit +' Teams is allowed'"
+                                            matTooltipPosition="above" class="d-inline-block m-0 px-1"
+                                            style="font-size: 10px;"><i class="bi bi-people text-muted"
+                                                style="font-size: 12px;"></i> {{i.team_limit}} Teams</p>
+                                        <p [matTooltip]="'Cash Bonus '+i.bonus_percentage +'% can be used'"
+                                            matTooltipPosition="above" class="d-inline-block m-0 px-1"
+                                            style="font-size: 10px;"><i class="bi bi-gift text-muted"
+                                                style="font-size: 12px;"></i></p>
+                                        <p class="d-inline-block m-0 px-1" style="font-size: 10px;"><i
+                                                class="bi bi-trophy text-muted" style="font-size: 12px;"></i>
+                                            {{i.winning_percentage}}%</p>
+                                    </div>
+                                    <div class="d-flex" *ngIf="i.success">
+                                        <p class="d-inline-block m-0 pe-2" style="font-size: 10px;"><i
+                                                class="bi bi-check-circle text-muted" style="font-size: 12px;"></i></p>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- When Data are not Found -->
+                            <div class=" card p-0 border border-1 d-flex justify-content-center " *ngIf="(show_home_button_empty_msg)">
+                                    <img  src="https://www.myteam11.com/fantasy-sports/assets/images/cricket_empty.png" alt="not avaliable" >
+                                    <p class="text-center  mt-3 text-muted">"Contest's are not created yet" </p>
+                                    <button *ngIf="show_home_button_empty_msg" mat-raised-button color='warn' class="text-center p-4 fs-4 mx-auto" (click)="route.navigate(['menu/home'])"> Home</button>
+                                </div>
+                            <!-- When Data are not Found -->
+                        </div>
+                        <div class="position-absolute bottom-0 start-50 translate-middle-x pb-3 w-100 d-flex justify-content-around"
+                        style="z-index: 1;">
+                            <button mat-raised-button color='warn' class="text-center p-2" (click)="showmyteamlist()" *ngIf="myNumber">
+                            My Team [ {{myNumber}} ]</button>
+        <button *ngIf="(contestsList.length)" mat-raised-button color='warn' class="text-center p-2" (click)="createTeam()"> Create New Team</button>
+    </div>
+        </div>
+</div>
+            

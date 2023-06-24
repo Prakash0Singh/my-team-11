@@ -1,0 +1,28 @@
+.donate-now label,
+.donate-now input {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 100px;
+  height: 43px;
+  border: 1px solid #CCC;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.donate-now input[type="radio"] {
+  display: none;
+}
+
+.donate-now label:hover {
+  background: #DDD;
+}
+
+.donate-now input[type="radio"]:checked + label {
+  background-color: #1141c1;
+  color: #fff;
+}
+

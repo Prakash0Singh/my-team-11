@@ -1,0 +1,88 @@
+<div class="row p-0">
+    <div class="col-lg-5 p-0 col-md-8 col-12  sm-mx-auto rounded bg-light position-relative cardContainer" >
+<div class="innerDIV">
+<div class="childdiv">
+<div class="col-12 p-0 m-0" style="min-height: 660px;">
+<div class="col-12 rounded  p-0 mx-0">
+<!-- NavBar Code -->
+      <div class="row p-0 m-0 topNavbar bg-light">
+              <div class="col-12 bg-dark p-0 rounded-top">
+                  <div class="d-flex justify-content-between align-items-center mt-3 mb-2">
+                      <div class=""  >
+                      <button mat-button (click)="route.navigate(['menu/contests'])">
+                          <mat-icon class="text-light fw-bold showingpointer">keyboard_backspace</mat-icon>
+                          </button>
+                          <p class="text-light fw-bold m-0 fs-5  d-inline-block text-wrap">{{matchTitle.team1display}} vs {{matchTitle.team2display}}</p>
+                      </div>
+                      <div class="d-flex">
+                          <div class="px-2" (click)="route.navigate(['menu/wallet'])">
+                              <mat-icon class="text-light showingpointer">account_balance_wallet</mat-icon>
+                          </div>
+                          <div class="px-2">
+                              <mat-icon class="text-light showingpointer" (click)="route.navigate(['menu/home'])">home</mat-icon>
+                          </div>
+                          <div class="px-2">
+                              <mat-icon class="text-light showingpointer">help</mat-icon>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+      </div>
+<!-- Api Data List -->
+    <div class="row pt-3 px-4 " style="margin-top: 50px;">
+        <div class="card p-0 mt-3 border border-1" *ngFor="let i of joinedtournaments"  (click)="showTeam(i)" style="cursor: pointer;background-color:#eceff2;" >
+            <div class="d-flex justify-content-between pb-2 pt-2">
+                <p class="text-muted d-inline-block m-0  ps-1 fw-bold " style="font-size: 12px;">{{i.name?i.name:'Test Skills'}}</p>
+                <p class="text-muted d-inline-block m-0  fw-bold pe-2 " style="font-size: 12px;">{{i.catname}}</p>
+            </div>
+        <div class="d-flex justify-content-between pb-2">
+            <div class="d-flex">
+                <p class="fs-5 fw-bold m-0 ps-2">{{i.win_amount?'₹'+i.win_amount:'Skills Test'}}</p>
+            </div>
+            <div class="d-flex flex-column pe-1">
+                <button *ngIf="!(status=='closed')" mat-raised-button color="primary"(click)="inviteUser($event,i)">
+                    Invite
+                </button>
+                <p class="m-0 fs-5" *ngIf="status=='closed'">{{i.entryfee|currency:'INR':'symbol':'1.0'}}</p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between pb-2" *ngIf="!(status=='closed')">
+            <p class="text-start d-inline-block ps-2 m-0">{{i.maximum_user - i.joinedusers }} Spots Left</p>
+            <p class="text-end d-inline-block pe-2 text-muted m-0">{{i.maximum_user}} Spots</p>
+        </div>
+        <div class="d-flex pb-3" *ngIf="!(status=='closed')">
+            <mat-progress-bar mode="determinate" value ="{{(i.joinedusers/i.maximum_user)*100}}"></mat-progress-bar>
+        </div>
+        <div class="d-flex justify-content-between border border-top-2" style="background-color:#c6c6c89e;">
+            <div class="d-flex">
+                <p [matTooltip]="'Joined Teams '+ i.teams?.length " matTooltipPosition="above" class="d-inline-block m-0 px-1" style="font-size: 10px;"><i class="bi bi-people text-muted" style="font-size: 12px;"></i> {{i.teams?.length}} Teams</p>
+            </div>
+            <div class="d-flex" *ngIf="i.success">
+                <p class="d-inline-block m-0 pe-2" style="font-size: 10px;"><i class="bi bi-check-circle text-muted" style="font-size: 12px;"></i></p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+</div>
+</div>
+</div>
+</div>
+<ng-template #callAPIDialog>
+    <h2 matDialogTitle>Invite</h2>
+    <mat-dialog-content>
+        <div class="d-flex" style="height: 30px; width: 400px;">
+            
+            <code  > <span class="m-0 p-3 text-dark">Refer Code - </span> {{inviteCode}}   <mat-icon matTooltip="copy" [matTooltipPosition]="'above'" class="fs-5 pt-1 text-dark showingpointer"(click)="copyCode(inviteCode)">content_copy</mat-icon> </code>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button color="primary" matDialogClose="yes">Share</button>
+    </mat-dialog-actions>
+</ng-template>
+  <!-- <div class="position-absolute bottom-0 start-50 translate-middle-x pb-3 w-100 d-flex justify-content-around" style="z-index: 1;" *ngIf="!(status=='closed')">
+    <button mat-raised-button color='warn' class="text-center p-2" (click)="route.navigate(['/contest-team/team-players',matchId])"> Create New Team</button>
+  </div> -->
+</div>
+</div>

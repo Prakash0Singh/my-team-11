@@ -1,0 +1,34 @@
+<div  style="min-height: 504px; margin-top: 84px; margin-bottom: 90px;">
+    <div class="container p-0 m-0">
+        <div class="row p-0 m-0">
+            <div class="col-12 pt-2">
+        <mat-tab-group>
+          
+          <mat-tab label="Today"> 
+                  <mat-card *ngFor="let item of today" class="mb-2">
+                    <mat-card-content>{{item.message}}</mat-card-content>
+                  </mat-card>
+          </mat-tab>
+
+          <mat-tab label="Previous"> 
+                  <mat-accordion *ngFor="let data of my_notify_list">
+                    <mat-expansion-panel class="mb-2">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title class="text-muted">
+                         Date - {{data.date}}
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <div *ngFor="let item of data.msg">
+                        <p class="pb-1"> {{item.message}}</p>
+                      </div>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+          </mat-tab>
+
+        </mat-tab-group>
+              
+
+            </div>
+        </div>
+    </div>
+</div>
